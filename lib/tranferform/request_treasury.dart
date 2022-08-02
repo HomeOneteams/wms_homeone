@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wms_homeone/components/buttom/buttonaccept.dart';
 import 'package:wms_homeone/page/menu_page.dart';
 import 'package:wms_homeone/tranferform/show_request_second.dart';
 import 'package:wms_homeone/themeapp/themeapp_style.dart';
@@ -177,7 +176,62 @@ class _RequestPageState extends State<RequestPage> {
                 ],
               ),
               Gap(150),
-              const ButtonAccept(),
+              Row(
+                children: [
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(14),
+                          bottomLeft: Radius.circular(14)),
+                      child: Container(
+                        height: 50,
+                        color: Colors.white,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MenuPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'ยกเลิก',
+                            style: GoogleFonts.kanit(
+                                fontSize: 15, color: Colors.black),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topRight: Radius.circular(14),
+                          bottomRight: Radius.circular(14)),
+                      child: Container(
+                        height: 50,
+                        color: HexColor('#244EB9'),
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ShowSecondPage(),
+                              ),
+                            );
+                          },
+                          child: Text(
+                            'ตกลง',
+                            style: GoogleFonts.kanit(
+                                fontSize: 15, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ],

@@ -6,8 +6,9 @@ import 'package:wms_homeone/components/showproduct/showproduct_selest.dart';
 import 'package:wms_homeone/page/menu_page.dart';
 import 'package:wms_homeone/themeapp/themeapp_style.dart';
 import 'package:wms_homeone/tranferform/request_treasury.dart';
+import 'package:wms_homeone/tranferform/showall_request_form.dart';
 
-import '../components/buttom/buttonrecord.dart';
+import '../components/analog/loading.dart';
 
 class ShowSecondPage extends StatefulWidget {
   const ShowSecondPage({Key? key}) : super(key: key);
@@ -284,7 +285,62 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                     ),
                   ),
                   Gap(20),
-                  ButtonRecord(),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(14),
+                              bottomLeft: Radius.circular(14)),
+                          child: Container(
+                            height: 50,
+                            color: Colors.white,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const RequestPage(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'ยกเลิก',
+                                style: GoogleFonts.kanit(
+                                    fontSize: 15, color: Colors.black),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topRight: Radius.circular(14),
+                              bottomRight: Radius.circular(14)),
+                          child: Container(
+                            height: 50,
+                            color: HexColor('#244EB9'),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ShowAllForm(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'บันทึก',
+                                style: GoogleFonts.kanit(
+                                    fontSize: 15, color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],

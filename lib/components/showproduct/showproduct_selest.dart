@@ -52,10 +52,111 @@ class _ProdutSelectNumberState extends State<ProdutSelectNumber> {
                             ],
                           ),
                         ),
-                        const Icon(
-                          Icons.delete_rounded,
-                          color: Colors.white,
-                        )
+                        TextButton(
+                          onPressed: () => showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(10.0))),
+                              content: Builder(
+                                builder: (context) {
+                                  var height =
+                                      MediaQuery.of(context).size.height;
+                                  var width = MediaQuery.of(context).size.width;
+
+                                  return Container(
+                                    height: height - 700,
+                                    width: width - 60,
+                                  );
+                                },
+                              ),
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'คุณต้องการลบรายการนี้ออกหรือไม่?',
+                                    style: Styles.textcontentblackStyle,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  Gap(20),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Container(
+                                          padding:
+                                              EdgeInsets.symmetric(vertical: 5),
+                                          width: 100,
+                                          color: Styles.mainColor,
+                                          child: Text(
+                                            '1085407',
+                                            style: Styles.textcontentStyle,
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Gap(20),
+                                  Text(
+                                    'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ขาว 80x50CM',
+                                    style: Styles.textcontentblackStyle,
+                                  )
+                                ],
+                              ),
+                              actions: <Widget>[
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(14),
+                                            bottomLeft: Radius.circular(14)),
+                                        child: Container(
+                                          color: Styles.primaryColor,
+                                          child: TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                context, 'Cancel'),
+                                            child: Text(
+                                              'ยกเลิก',
+                                              style:
+                                                  Styles.textcontentblackStyle,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.only(
+                                            topRight: Radius.circular(14),
+                                            bottomRight: Radius.circular(14)),
+                                        child: Container(
+                                          color: Styles.mainColor,
+                                          child: TextButton(
+                                            onPressed: () =>
+                                                Navigator.pop(context, 'OK'),
+                                            child: Text(
+                                              'ยืนยัน',
+                                              style: Styles.textcontentStyle,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          child: const Icon(
+                            Icons.delete_rounded,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                   ),
