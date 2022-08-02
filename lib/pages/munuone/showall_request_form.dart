@@ -3,21 +3,20 @@ import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:wms_homeone/components/showproduct/showproduct_selest.dart';
-import 'package:wms_homeone/page/menu_page.dart';
+import 'package:wms_homeone/pages/munuone/request_treasury.dart';
+import 'package:wms_homeone/pages/munuone/show_request_second.dart';
 import 'package:wms_homeone/themeapp/themeapp_style.dart';
-import 'package:wms_homeone/tranferform/request_treasury.dart';
-import 'package:wms_homeone/tranferform/showall_request_form.dart';
 
-import '../components/analog/loading.dart';
+import '../../components/showproduct/showproductall.dart';
 
-class ShowSecondPage extends StatefulWidget {
-  const ShowSecondPage({Key? key}) : super(key: key);
+class ShowAllForm extends StatefulWidget {
+  const ShowAllForm({Key? key}) : super(key: key);
 
   @override
-  State<ShowSecondPage> createState() => _ShowSecondPageState();
+  State<ShowAllForm> createState() => _ShowAllFormState();
 }
 
-class _ShowSecondPageState extends State<ShowSecondPage> {
+class _ShowAllFormState extends State<ShowAllForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +33,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const RequestPage()),
+                MaterialPageRoute(builder: (context) => const ShowSecondPage()),
               );
             },
             child: const Icon(
@@ -44,17 +43,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
           ),
         ),
         backgroundColor: Styles.mainColor,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.border_color_rounded,
-              color: Colors.white,
-            ),
-            onPressed: () {
-              // do something
-            },
-          )
-        ],
+        
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -238,29 +227,88 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                   ),
                   Gap(20),
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'เอกสารอ้างอิง',
-                        style: Styles.textcontentblackStyle,
-                      ),
-                      Gap(10),
-                      Container(
-                        height: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: TextField(
-                            decoration: InputDecoration(
-                                border: InputBorder.none, hintText: ''),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 2,
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(14),
+                                topRight: Radius.circular(14),
+                              ),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                color: Styles.mainColor,
+                                height: 49,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 0),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              color: Styles.primaryColor,
+                                              width: 100,
+                                              height: 28,
+                                              child: Center(
+                                                child: Text(
+                                                  'เอกสารอ้างอิง',
+                                                  style: Styles
+                                                      .textcontentblackStyle,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      const Icon(
+                                        Icons.article_rounded,
+                                        color: Colors.white,
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            flex: 2,
+                            child: ClipRRect(
+                              borderRadius: const BorderRadius.only(
+                                bottomLeft: Radius.circular(14),
+                                bottomRight: Radius.circular(14),
+                              ),
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                color: Styles.witeColor,
+                                height: 49,
+                                child: TextField(
+                                   style: Styles.textcontentblackStyle,
+                                  decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: '',
+                                    hintStyle: GoogleFonts.kanit(fontSize: 15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
+                  
                   Gap(20),
                   Container(
                     height: 50,
@@ -281,7 +329,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                   Column(
                     children: List.generate(
                       5,
-                      (index) => ProdutSelectNumber(),
+                      (index) => ProductDetail(),
                     ),
                   ),
                   Gap(20),

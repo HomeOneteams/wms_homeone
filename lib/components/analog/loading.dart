@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 
 class Loading extends StatelessWidget {
-  const Loading({Key? key}) : super(key: key);
-
+  const Loading({Key? key, this.text}) : super(key: key);
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return CupertinoAlertDialog(
         title: Row(
-      children: const [
-        CupertinoActivityIndicator(),
-        SizedBox(
+      children:  [
+       const CupertinoActivityIndicator(),
+       const SizedBox(
           width: 5,
         ),
-        Text("Loading..."),
+        Text(text??"Loading..."),
       ],
     ));
   }

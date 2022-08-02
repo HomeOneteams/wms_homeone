@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wms_homeone/page/menu_page.dart';
+import 'pages/menu/menu_page.dart';
+import 'routes/routes.dart';
+import 'themeapp/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +16,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MenuPage(),
+       theme: theme(),
+      onGenerateRoute: Routers.generateRoute,
+        initialRoute: '/',
     );
   }
 }
