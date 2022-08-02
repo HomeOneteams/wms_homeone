@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wms_homeone/components/buttom/buttonaccept.dart';
 import 'package:wms_homeone/page/menu_page.dart';
-import 'package:wms_homeone/page/show_request_second.dart';
+import 'package:wms_homeone/tranferform/show_request_second.dart';
+import 'package:wms_homeone/themeapp/themeapp_style.dart';
 
 class RequestPage extends StatefulWidget {
   const RequestPage({Key? key}) : super(key: key);
@@ -16,12 +18,12 @@ class _RequestPageState extends State<RequestPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#DADADA"),
+      backgroundColor: Styles.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'ขอโอนสินค้า-ระหว่างคลัง (RI)',
-          style: GoogleFonts.kanit(fontSize: 15),
+          style: Styles.textcontentStyle,
         ),
         leading: IconButton(
           onPressed: () {},
@@ -38,7 +40,7 @@ class _RequestPageState extends State<RequestPage> {
             ),
           ),
         ),
-        backgroundColor: HexColor("#244EB9"),
+        backgroundColor: Styles.mainColor,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -60,8 +62,10 @@ class _RequestPageState extends State<RequestPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('เลขที่เอกสารxxx01(RI)',
-                      style: GoogleFonts.kanit(fontSize: 12)),
+                  Text(
+                    'เลขที่เอกสารxxx01(RI)',
+                    style: Styles.textlableblack,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,11 +74,10 @@ class _RequestPageState extends State<RequestPage> {
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
                           width: 50,
-                          color: HexColor('#244EB9'),
+                          color: Styles.mainColor,
                           child: Text(
                             'ซ่อน',
-                            style: GoogleFonts.kanit(
-                                fontSize: 12, color: Colors.white),
+                            style: Styles.textlablewtie,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -82,7 +85,7 @@ class _RequestPageState extends State<RequestPage> {
                       Gap(20),
                       Text(
                         '1/2',
-                        style: GoogleFonts.kanit(fontSize: 15),
+                        style: Styles.textcontentblackStyle,
                       )
                     ],
                   ),
@@ -96,7 +99,7 @@ class _RequestPageState extends State<RequestPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('ที่เก็บต้นทาง',
-                          style: GoogleFonts.kanit(fontSize: 15)),
+                          style: Styles.textcontentblackStyle),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
@@ -110,7 +113,7 @@ class _RequestPageState extends State<RequestPage> {
                         ),
                       ),
                       Text('ที่เก็บปลายทาง',
-                          style: GoogleFonts.kanit(fontSize: 15)),
+                          style: Styles.textcontentblackStyle),
                     ],
                   ),
                   const Gap(10),
@@ -129,7 +132,7 @@ class _RequestPageState extends State<RequestPage> {
                 children: [
                   Text(
                     'หมายเหตุ',
-                    style: GoogleFonts.kanit(fontSize: 15),
+                    style: Styles.textcontentblackStyle,
                   ),
                   Gap(10),
                   Container(
@@ -154,7 +157,7 @@ class _RequestPageState extends State<RequestPage> {
                 children: [
                   Text(
                     'เอกสารอ้างอิง',
-                    style: GoogleFonts.kanit(fontSize: 15),
+                    style: Styles.textcontentblackStyle,
                   ),
                   Gap(10),
                   Container(
@@ -174,62 +177,7 @@ class _RequestPageState extends State<RequestPage> {
                 ],
               ),
               Gap(150),
-              Row(
-                children: [
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(14),
-                          bottomLeft: Radius.circular(14)),
-                      child: Container(
-                        height: 50,
-                        color: Colors.white,
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const MenuPage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'ยกเลิก',
-                            style: GoogleFonts.kanit(
-                                fontSize: 15, color: Colors.black),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(14),
-                          bottomRight: Radius.circular(14)),
-                      child: Container(
-                        height: 50,
-                        color: HexColor('#244EB9'),
-                        child: TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const ShowSecondPage(),
-                              ),
-                            );
-                          },
-                          child: Text(
-                            'ตกลง',
-                            style: GoogleFonts.kanit(
-                                fontSize: 15, color: Colors.white),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              const ButtonAccept(),
             ],
           ),
         ],
@@ -246,7 +194,7 @@ class MyStatefulWidgetOrigin extends StatefulWidget {
 }
 
 class _MyStatefulWidgetOriginState extends State<MyStatefulWidgetOrigin> {
-  String dropdownValue = 'One';
+  String dropdownValue = 'เลือกที่เก็บต้นทาง';
 
   @override
   Widget build(BuildContext context) {
@@ -263,7 +211,7 @@ class _MyStatefulWidgetOriginState extends State<MyStatefulWidgetOrigin> {
             color: Colors.black,
           ),
           elevation: 16,
-          style: GoogleFonts.kanit(color: HexColor('#9F9B9B'), fontSize: 12),
+          style: Styles.textlableStyle,
           underline: Container(
             height: 2,
             color: Colors.transparent,
@@ -273,8 +221,13 @@ class _MyStatefulWidgetOriginState extends State<MyStatefulWidgetOrigin> {
               dropdownValue = newValue!;
             });
           },
-          items: <String>['One', 'Two', 'Free', 'Four']
-              .map<DropdownMenuItem<String>>((String value) {
+          isExpanded: true,
+          items: [
+            'เลือกที่เก็บต้นทาง',
+            'เลือกที่เก็บต้นทาง1',
+            'เลือกที่เก็บต้นทาง2',
+            'เลือกที่เก็บต้นทาง3'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),
@@ -296,7 +249,7 @@ class MyStatefulWidgetDestination extends StatefulWidget {
 
 class _MyStatefulWidgetDestinationState
     extends State<MyStatefulWidgetDestination> {
-  String dropdownValue = 'One';
+  String dropdownValue = 'เลือกที่เก็บปลายทาง';
 
   @override
   Widget build(BuildContext context) {
@@ -313,7 +266,7 @@ class _MyStatefulWidgetDestinationState
             color: Colors.black,
           ),
           elevation: 16,
-          style: GoogleFonts.kanit(color: HexColor('#9F9B9B'), fontSize: 12),
+          style: Styles.textlableStyle,
           underline: Container(
             height: 2,
             color: Colors.transparent,
@@ -323,8 +276,13 @@ class _MyStatefulWidgetDestinationState
               dropdownValue = newValue!;
             });
           },
-          items: <String>['One', 'Two', 'Free', 'Four']
-              .map<DropdownMenuItem<String>>((String value) {
+          isExpanded: true,
+          items: [
+            'เลือกที่เก็บปลายทาง',
+            'เลือกที่เก็บปลายทาง1',
+            'เลือกที่เก็บปลายทาง2',
+            'เลือกที่เก็บปลายทาง3'
+          ].map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
               child: Text(value),

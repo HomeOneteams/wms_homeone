@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:wms_homeone/components/showproduct/showproduct_selest.dart';
 import 'package:wms_homeone/page/menu_page.dart';
+import 'package:wms_homeone/themeapp/themeapp_style.dart';
+import 'package:wms_homeone/tranferform/request_treasury.dart';
+
+import '../components/buttom/buttonrecord.dart';
 
 class ShowSecondPage extends StatefulWidget {
   const ShowSecondPage({Key? key}) : super(key: key);
@@ -15,12 +20,12 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#DADADA"),
+      backgroundColor: Styles.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'ขอโอนสินค้า-ระหว่างคลัง (RI)',
-          style: GoogleFonts.kanit(fontSize: 15),
+          style: Styles.textcontentStyle,
         ),
         leading: IconButton(
           onPressed: () {},
@@ -28,7 +33,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MenuPage()),
+                MaterialPageRoute(builder: (context) => const RequestPage()),
               );
             },
             child: const Icon(
@@ -37,7 +42,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
             ),
           ),
         ),
-        backgroundColor: HexColor("#244EB9"),
+        backgroundColor: Styles.mainColor,
         actions: <Widget>[
           IconButton(
             icon: const Icon(
@@ -59,8 +64,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('เลขที่เอกสารxxx01(RI)',
-                      style: GoogleFonts.kanit(fontSize: 12)),
+                  Text('เลขที่เอกสารxxx01(RI)', style: Styles.textlableblack),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,11 +73,10 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
                           width: 50,
-                          color: HexColor('#244EB9'),
+                          color: Styles.mainColor,
                           child: Text(
                             'ซ่อน',
-                            style: GoogleFonts.kanit(
-                                fontSize: 12, color: Colors.white),
+                            style: Styles.textlablewtie,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -81,12 +84,13 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                       Gap(20),
                       Text(
                         '1/2',
-                        style: GoogleFonts.kanit(fontSize: 15),
+                        style: Styles.textcontentblackStyle,
                       )
                     ],
                   ),
                 ],
               ),
+              Gap(10),
               Column(
                 children: [
                   Row(
@@ -94,12 +98,12 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text('ที่เก็บต้นทาง',
-                          style: GoogleFonts.kanit(fontSize: 15)),
+                          style: Styles.textcontentblackStyle),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Container(
                           width: 40,
-                          color: HexColor('#37B218'),
+                          color: Styles.successColor,
                           child: const Icon(
                             Icons.compare_arrows_rounded,
                             size: 15,
@@ -108,7 +112,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                         ),
                       ),
                       Text('ที่เก็บปลายทาง',
-                          style: GoogleFonts.kanit(fontSize: 15)),
+                          style: Styles.textcontentblackStyle),
                     ],
                   ),
                   const Gap(10),
@@ -119,13 +123,12 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            color: Colors.white,
+                            color: Styles.witeColor,
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: '5555',
-                                hintStyle: TextStyle(
-                                    fontSize: 12, color: HexColor('#9F9B9B')),
+                                hintStyle: Styles.textlableStyle,
                               ),
                             ),
                           ),
@@ -137,13 +140,12 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                           borderRadius: BorderRadius.circular(10),
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10),
-                            color: Colors.white,
+                            color: Styles.witeColor,
                             child: TextField(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: '5555',
-                                hintStyle: TextStyle(
-                                    fontSize: 12, color: HexColor('#9F9B9B')),
+                                hintStyle: Styles.textlableStyle,
                               ),
                             ),
                           ),
@@ -166,7 +168,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                               child: Container(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),
-                                color: HexColor('#244EB9'),
+                                color: Styles.mainColor,
                                 height: 49,
                                 child: Padding(
                                   padding: const EdgeInsets.only(left: 0),
@@ -179,15 +181,14 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                                         child: Row(
                                           children: [
                                             Container(
-                                              color: HexColor("#D9D9D9"),
+                                              color: Styles.primaryColor,
                                               width: 100,
                                               height: 28,
                                               child: Center(
                                                 child: Text(
                                                   'หมายเหตุ',
-                                                  style: GoogleFonts.kanit(
-                                                      fontSize: 15,
-                                                      color: Colors.black),
+                                                  style: Styles
+                                                      .textcontentblackStyle,
                                                 ),
                                               ),
                                             ),
@@ -218,7 +219,7 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                               child: Container(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),
-                                color: Colors.white,
+                                color: Styles.witeColor,
                                 height: 100,
                                 child: TextField(
                                   decoration: InputDecoration(
@@ -234,6 +235,56 @@ class _ShowSecondPageState extends State<ShowSecondPage> {
                       ),
                     ],
                   ),
+                  Gap(20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'เอกสารอ้างอิง',
+                        style: Styles.textcontentblackStyle,
+                      ),
+                      Gap(10),
+                      Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.white,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                                border: InputBorder.none, hintText: ''),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Gap(20),
+                  Container(
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'สแกน/ค้นหา บาร์โค้ด รหัส ชื่อสินค้า',
+                        hintStyle: Styles.textlableStyle,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  Gap(20),
+                  Column(
+                    children: List.generate(
+                      5,
+                      (index) => ProdutSelectNumber(),
+                    ),
+                  ),
+                  Gap(20),
+                  ButtonRecord(),
                 ],
               ),
             ],

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
-import 'package:wms_homeone/page/request_treasury.dart';
+import 'package:wms_homeone/tranferform/request_treasury.dart';
+import 'package:wms_homeone/themeapp/themeapp_style.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -15,12 +16,12 @@ class _MenuPageState extends State<MenuPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: HexColor("#DADADA"),
+      backgroundColor: Styles.primaryColor,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
           'โอนสินค้า',
-          style: GoogleFonts.kanit(fontSize: 15),
+          style: Styles.textcontentStyle,
         ),
         leading: IconButton(
           onPressed: () {},
@@ -29,7 +30,7 @@ class _MenuPageState extends State<MenuPage> {
             size: 20,
           ),
         ),
-        backgroundColor: HexColor("#244EB9"),
+        backgroundColor: Styles.mainColor,
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -57,7 +58,7 @@ class _MenuPageState extends State<MenuPage> {
                               topRight: Radius.circular(25),
                             ),
                             child: Container(
-                              color: HexColor('#244EB9'),
+                              color: Styles.mainColor,
                               height: 49,
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 0),
@@ -70,26 +71,21 @@ class _MenuPageState extends State<MenuPage> {
                                       child: Row(
                                         children: [
                                           Container(
-                                            color: HexColor("#D9D9D9"),
+                                            color: Styles.primaryColor,
                                             width: 59,
                                             height: 28,
                                             child: Center(
                                               child: Text(
                                                 '1',
-                                                style: GoogleFonts.kanit(
-                                                    fontSize: 15,
-                                                    color: HexColor('#244EB9')),
+                                                style: Styles.textNumberStyle,
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    Text(
-                                      'ขอโอนสินค้า-ระหว่างคลัง (RI)',
-                                      style: GoogleFonts.kanit(
-                                          fontSize: 15, color: Colors.white),
-                                    ),
+                                    Text('ขอโอนสินค้า-ระหว่างคลัง (RI)',
+                                        style: Styles.textcontentStyle),
                                     const Icon(
                                       Icons.compare_arrows_rounded,
                                       color: Colors.white,
@@ -112,7 +108,7 @@ class _MenuPageState extends State<MenuPage> {
                               bottomRight: Radius.circular(25),
                             ),
                             child: Container(
-                              color: Colors.white,
+                              color: Styles.witeColor,
                               height: 49,
                             ),
                           ),
@@ -137,7 +133,7 @@ class _MenuPageState extends State<MenuPage> {
                             topRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: HexColor('#244EB9'),
+                            color: Styles.mainColor,
                             height: 49,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 0),
@@ -150,15 +146,13 @@ class _MenuPageState extends State<MenuPage> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          color: HexColor("#D9D9D9"),
+                                          color: Styles.primaryColor,
                                           width: 59,
                                           height: 28,
                                           child: Center(
                                             child: Text(
                                               '2',
-                                              style: GoogleFonts.kanit(
-                                                  fontSize: 15,
-                                                  color: HexColor('#244EB9')),
+                                              style: Styles.textNumberStyle,
                                             ),
                                           ),
                                         ),
@@ -167,8 +161,7 @@ class _MenuPageState extends State<MenuPage> {
                                   ),
                                   Text(
                                     'จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (RI)',
-                                    style: GoogleFonts.kanit(
-                                        fontSize: 15, color: Colors.white),
+                                    style: Styles.textcontentStyle,
                                   ),
                                 ],
                               ),
@@ -188,15 +181,14 @@ class _MenuPageState extends State<MenuPage> {
                             bottomRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: Colors.white,
+                            color: Styles.witeColor,
                             height: 49,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   'อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)',
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 12, color: HexColor('#9F9B9B')),
+                                  style: Styles.textlableStyle,
                                   textAlign: TextAlign.center,
                                 ),
                               ],
@@ -223,7 +215,7 @@ class _MenuPageState extends State<MenuPage> {
                             topRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: HexColor('#244EB9'),
+                            color: Styles.mainColor,
                             height: 49,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 0),
@@ -236,15 +228,13 @@ class _MenuPageState extends State<MenuPage> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          color: HexColor("#D9D9D9"),
+                                          color: Styles.primaryColor,
                                           width: 59,
                                           height: 28,
                                           child: Center(
                                             child: Text(
                                               '3',
-                                              style: GoogleFonts.kanit(
-                                                  fontSize: 15,
-                                                  color: HexColor('#244EB9')),
+                                              style: Styles.textNumberStyle,
                                             ),
                                           ),
                                         ),
@@ -253,8 +243,7 @@ class _MenuPageState extends State<MenuPage> {
                                   ),
                                   Text(
                                     'โอนสินค้า-ระหว่างคลัง (RL)',
-                                    style: GoogleFonts.kanit(
-                                        fontSize: 15, color: Colors.white),
+                                    style: Styles.textcontentStyle,
                                   ),
                                   const Icon(
                                     Icons.compare_arrows_rounded,
@@ -278,7 +267,7 @@ class _MenuPageState extends State<MenuPage> {
                             bottomRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: Colors.white,
+                            color: Styles.witeColor,
                             height: 49,
                           ),
                         ),
@@ -301,7 +290,7 @@ class _MenuPageState extends State<MenuPage> {
                             topRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: HexColor('#244EB9'),
+                            color: Styles.mainColor,
                             height: 49,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 5),
@@ -314,15 +303,13 @@ class _MenuPageState extends State<MenuPage> {
                                     child: Row(
                                       children: [
                                         Container(
-                                          color: HexColor("#D9D9D9"),
+                                          color: Styles.primaryColor,
                                           width: 59,
                                           height: 28,
                                           child: Center(
                                             child: Text(
                                               '4',
-                                              style: GoogleFonts.kanit(
-                                                  fontSize: 15,
-                                                  color: HexColor('#244EB9')),
+                                              style: Styles.textNumberStyle,
                                             ),
                                           ),
                                         ),
@@ -331,8 +318,7 @@ class _MenuPageState extends State<MenuPage> {
                                   ),
                                   Text(
                                     'รับโอนสินค้าระหว่างสาขา-ปลายทาง (RLB)',
-                                    style: GoogleFonts.kanit(
-                                        fontSize: 15, color: Colors.white),
+                                    style: Styles.textcontentStyle,
                                   ),
                                 ],
                               ),
@@ -352,15 +338,14 @@ class _MenuPageState extends State<MenuPage> {
                             bottomRight: Radius.circular(25),
                           ),
                           child: Container(
-                            color: Colors.white,
+                            color: Styles.witeColor,
                             height: 49,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
                                   'อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)',
-                                  style: GoogleFonts.kanit(
-                                      fontSize: 12, color: HexColor('#9F9B9B')),
+                                  style: Styles.textlableStyle,
                                   textAlign: TextAlign.center,
                                 ),
                               ],
