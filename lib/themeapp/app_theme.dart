@@ -33,9 +33,7 @@ InputDecorationTheme inputDecorationTheme() {
 }
 
 TextTheme textTheme() {
-  return GoogleFonts.kanitTextTheme(
-    
-  );
+  return GoogleFonts.kanitTextTheme();
 }
 
 AppBarTheme appBarTheme() {
@@ -43,7 +41,7 @@ AppBarTheme appBarTheme() {
     color: Styles.mainColor,
     elevation: 0,
     brightness: Brightness.light,
-    iconTheme: IconThemeData(color: Colors.white,size: getProportionateScreenWidth(20)),
+    iconTheme: IconThemeData(color: Colors.white, size: 20),
     textTheme: TextTheme(
       headline6: Styles.textcontentStyle,
     ),

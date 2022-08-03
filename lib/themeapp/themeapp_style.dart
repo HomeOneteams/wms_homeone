@@ -11,6 +11,7 @@ class Styles {
   static HexColor boxredColor = HexColor('#C9473D');
   static HexColor primaryColor = HexColor('#DADADA');
   static HexColor successColor = HexColor('#37B218');
+  static HexColor mapboxColor = HexColor('#562222');
 
   static TextStyle textlableStyle =
       GoogleFonts.kanit(fontSize: 12, color: textlabelColor);
