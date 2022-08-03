@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:wms_homeone/components/appbar/appbar.dart';
 import 'package:wms_homeone/components/input_feild.dart';
@@ -19,30 +18,27 @@ class _MenuOneState extends State<MenuOne> {
     return Scaffold(
       backgroundColor: Styles.primaryColor,
       appBar: LuffyAppBar(
-        icon: GestureDetector(
-          child:const Icon(Icons.arrow_back_ios_rounded),
-          onTap: ()=>sendToBack(context: context),
-        ),
-        title: "ขอโอนสินค้า-ระหว่างคลัง (RI)"),
-        body: Padding(
-          padding:  EdgeInsets.all(getProportionateScreenHeight(20)),
-          child: ListView(children: [
-            SoLoInputFeild(
-              borderRadius: 14, 
-              verticalPadding: 15,           
-              onChanged: (str){
-                print(str);
-              },  
-              fillColor: Styles.witeColor,
-                  hintText: "ค้นหา ใบขอโอนสินค้า หรือ ใบรับสินค้า",
-                  prefixIconData: Icons.search,
-                  accentColor: Colors.indigo,
-                ),
-          ]),
-        ),
+          icon: GestureDetector(
+            child: const Icon(Icons.arrow_back_ios_rounded),
+            onTap: () => sendToBack(context: context),
+          ),
+          title: "ขอโอนสินค้า-ระหว่างคลัง (RI)"),
+      body: Padding(
+        padding: EdgeInsets.all(getProportionateScreenHeight(20)),
+        child: ListView(children: [
+          SoLoInputFeild(
+            borderRadius: 14,
+            verticalPadding: 15,
+            onChanged: (str) {
+              print(str);
+            },
+            fillColor: Styles.witeColor,
+            hintText: "ค้นหา ใบขอโอนสินค้า หรือ ใบรับสินค้า",
+            prefixIconData: Icons.search,
+            accentColor: Colors.indigo,
+          ),
+        ]),
+      ),
     );
   }
 }
-
-
-

@@ -11,15 +11,29 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 0),          
-      children: [          
-       LuffyMenu(title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (RI)", number: "1", subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)", press:()=>sendToPage(context: context, routeName: '/MenuOne')),
-       LuffyMenu(title: "โอนสินค้า-ระหว่างคลัง (RL)", number: "2", icon: Icons.compare_arrows_rounded,),
-       LuffyMenu(title: "รับโอนสินค้าระหว่างสาขา-ปลายทาง (RLB)", number: "3", subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",),
+      padding: const EdgeInsets.symmetric(horizontal: 0),
+      children: [
+        LuffyMenu(
+            width: 20,
+            title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (RI)",
+            number: "1",
+            subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
+            press: () => sendToPage(context: context, routeName: '/MenuOne')),
+        LuffyMenu(
+          width: 20,
+          title: "โอนสินค้า-ระหว่างคลัง (RL)",
+          number: "2",
+          icon: Icons.compare_arrows_rounded,
+        ),
+        LuffyMenu(
+            width: 20,
+            title: "รับโอนสินค้าระหว่างสาขา-ปลายทาง (RLB)",
+            number: "3",
+            subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
+            press: () => sendToPage(context: context, routeName: '/MenuThree')),
       ],
     );
   }
