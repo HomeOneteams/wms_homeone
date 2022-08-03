@@ -44,7 +44,7 @@ class _SoloDocumentState extends State<SoloDocument> {
                             children: [
                               Container(
                                 color: Styles.witeColor,
-                                width: 130,
+                                width: 160,
                                 height: 28,
                                 child: Center(
                                   child: Text(

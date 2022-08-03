@@ -6,10 +6,16 @@ import '../../themeapp/themeapp_style.dart';
 
 class LuffyStorage extends StatefulWidget {
   const LuffyStorage(
-      {Key? key, required this.titleorigin, required this.titledestination})
+      {Key? key,
+      required this.titleorigin,
+      required this.titledestination,
+      required this.origin,
+      required this.destination})
       : super(key: key);
   final String titleorigin;
   final String titledestination;
+  final String origin;
+  final String destination;
 
   @override
   State<LuffyStorage> createState() => _LuffyStorageState();
@@ -25,7 +31,7 @@ class _LuffyStorageState extends State<LuffyStorage> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text('ที่เก็บต้นทาง', style: Styles.textcontentblackStyle),
+              Text(widget.origin, style: Styles.textcontentblackStyle),
               ClipRRect(
                 borderRadius: BorderRadius.circular(20),
                 child: Container(
@@ -38,7 +44,7 @@ class _LuffyStorageState extends State<LuffyStorage> {
                   ),
                 ),
               ),
-              Text('ที่เก็บปลายทาง', style: Styles.textcontentblackStyle),
+              Text(widget.destination, style: Styles.textcontentblackStyle),
             ],
           ),
           const Gap(10),

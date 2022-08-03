@@ -31,7 +31,8 @@ class _BodyState extends State<Body> {
             title: "รับโอนสินค้าระหว่างสาขา-ปลายทาง (RLB)",
             number: "3",
             subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
-            press: () => sendToPage(context: context, routeName: '/')),
+            press: () =>
+                sendToPage(context: context, routeName: '/ShoperFirstPage')),
       ],
     );
   }

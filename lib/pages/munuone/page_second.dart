@@ -58,9 +58,10 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
             ),
             Gap(getProportionateScreenHeight(20)),
             const LuffyStorage(
-              titleorigin: 'W1-Z05-1 พื้นที่รวม',
-              titledestination: 'W1-Z05-1 พื้นที่รวม',
-            ),
+                origin: 'ที่เก็บต้นทาง',
+                destination: 'ที่เก็บปลายทาง',
+                titleorigin: 'W1-Z05-1 พื้นที่รวม',
+                titledestination: 'W1-Z05-1 พื้นที่รวม'),
             Gap(getProportionateScreenHeight(20)),
             const SoloBox(
               title: 'หมายเหตุ',

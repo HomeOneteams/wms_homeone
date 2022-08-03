@@ -43,6 +43,8 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
             ),
             Gap(getProportionateScreenHeight(20)),
             const LuffyStorage(
+                origin: 'ที่เก็บต้นทาง',
+                destination: 'ที่เก็บปลายทาง',
                 titleorigin: 'W1-Z05-1 พื้นที่รวม',
                 titledestination: 'W1-Z05-1 พื้นที่รวม'),
             Gap(getProportionateScreenHeight(20)),
