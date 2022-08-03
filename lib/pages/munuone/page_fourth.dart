@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button_alert.dart';
 import 'package:wms_homeone/components/storage/luffy_storage.dart';
 import 'package:wms_homeone/pages/munuone/components/product_edit_num.dart';
+import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart';
 import 'package:wms_homeone/pages/munuone/components/soloproduct/solo_product_box.dart';
 
@@ -51,7 +52,7 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
               icon: Icons.article_rounded,
             ),
             Gap(getProportionateScreenHeight(20)),
-            const SoloBox(
+            const SoloDocument(
               title: 'เอกสารอ้างอิง',
               subtitle: 'เลขที่ X01-RI6405-00519',
               icon: Icons.article_rounded,
@@ -64,12 +65,14 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
                 subtitleunit: 'หน่วย PC~ชิ้น',
                 requestnum: 'จำนวนขอโอน 5',
                 allnum: 'จำนวนจัดได้ 4'),
-            Gap(getProportionateScreenHeight(100)),
-            const LuffyAlert(
-                titleleft: 'ยกเลิก',
-                titleright: 'ยืนยัน',
-                titlealert: 'บันทึกจัดสินค้าสำเร็จ',
-                subtitlalert: 'ใบขอโอน/รับสินค้าเลขที่ X01-RI6405-00519')
+            Gap(getProportionateScreenHeight(80)),
+            LuffyAlert(
+              titleleft: 'ยกเลิก',
+              titleright: 'ยืนยัน',
+              titlealert: 'บันทึกจัดสินค้าสำเร็จ',
+              subtitlalert: 'ใบขอโอน/รับสินค้าเลขที่ X01-RI6405-00519',
+              pressleft: () => sendToBack(context: context),
+            )
           ],
         ),
       ),

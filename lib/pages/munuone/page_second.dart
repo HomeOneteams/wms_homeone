@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/components/storage/luffy_storage.dart';
+import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
 
 import '../../components/appbar/appbar.dart';
 import '../../components/input_feild.dart';
@@ -67,7 +68,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
               icon: Icons.article_rounded,
             ),
             Gap(getProportionateScreenHeight(20)),
-            const SoloBox(
+            const SoloDocument(
               title: 'เอกสารอ้างอิง',
               subtitle: 'เลขที่ X01-RI6405-00519',
               icon: Icons.article_rounded,

@@ -58,7 +58,7 @@ class _SoloListState extends State<SoloList> {
                                     children: [
                                       Container(
                                         color: Styles.witeColor,
-                                        width: 100,
+                                        width: 150,
                                         height: 28,
                                         child: Center(
                                           child: Text(
