@@ -17,16 +17,11 @@ class _BodyState extends State<Body> {
       padding: const EdgeInsets.symmetric(horizontal: 0),
       children: [
         LuffyMenu(
-<<<<<<< HEAD
-=======
-            width: 20,
->>>>>>> luffy
             title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (RI)",
             number: "1",
             subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
             press: () => sendToPage(context: context, routeName: '/MenuOne')),
         LuffyMenu(
-<<<<<<< HEAD
             title: "โอนสินค้า-ระหว่างคลัง (RL)",
             number: "2",
             icon: Icons.compare_arrows_rounded,
@@ -38,19 +33,6 @@ class _BodyState extends State<Body> {
             subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
             press: () =>
                 sendToPage(context: context, routeName: '/ShoperFirstPage')),
-=======
-          width: 20,
-          title: "โอนสินค้า-ระหว่างคลัง (RL)",
-          number: "2",
-          icon: Icons.compare_arrows_rounded,
-        ),
-        LuffyMenu(
-            width: 20,
-            title: "รับโอนสินค้าระหว่างสาขา-ปลายทาง (RLB)",
-            number: "3",
-            subtitle: "อ้างอิง ใบขอโอน (RI) หรือ ใบรับสินค้า (RRV,RRN)",
-            press: () => sendToPage(context: context, routeName: '/MenuThree')),
->>>>>>> luffy
       ],
     );
   }

@@ -27,11 +27,7 @@ class _MenuOneState extends State<MenuOne> {
             child: const Icon(Icons.arrow_back_ios_rounded),
             onTap: () => sendToBack(context: context),
           ),
-<<<<<<< HEAD
           title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (PP-RI)"),
-=======
-          title: "ขอโอนสินค้า-ระหว่างคลัง (RI)"),
->>>>>>> luffy
       body: Padding(
         padding: EdgeInsets.all(getProportionateScreenHeight(20)),
         child: ListView(children: [
@@ -46,7 +42,6 @@ class _MenuOneState extends State<MenuOne> {
             prefixIconData: Icons.search,
             accentColor: Colors.indigo,
           ),
-<<<<<<< HEAD
           Gap(getProportionateScreenHeight(20)),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -80,8 +75,6 @@ class _MenuOneState extends State<MenuOne> {
                 sendToPage(context: context, routeName: '/MenuOnePage2'),
             titleright: 'เริ่มจัดสินค้า',
           ),
-=======
->>>>>>> luffy
         ]),
       ),
     );

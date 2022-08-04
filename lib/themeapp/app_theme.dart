@@ -36,11 +36,7 @@ AppBarTheme appBarTheme() {
     color: Styles.mainColor,
     elevation: 0,
     brightness: Brightness.light,
-<<<<<<< HEAD
     iconTheme: IconThemeData(color: Colors.white, size: 20),
-=======
-    iconTheme: const IconThemeData(color: Colors.white, size: 20),
->>>>>>> luffy
     textTheme: TextTheme(
       headline6: Styles.textcontentStyle,
     ),
