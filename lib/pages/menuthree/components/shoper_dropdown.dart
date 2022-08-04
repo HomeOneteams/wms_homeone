@@ -70,7 +70,7 @@ class _MyStatefulWidgetOriginState extends State<MyStatefulWidgetOrigin> {
         color: Colors.white,
         child: DropdownButton<String>(
           value: dropdownValue,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_drop_down,
             color: Colors.black,
           ),
@@ -125,7 +125,7 @@ class _MyStatefulWidgetDestinationState
         color: Colors.white,
         child: DropdownButton<String>(
           value: dropdownValue,
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_drop_down,
             color: Colors.black,
           ),

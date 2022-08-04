@@ -88,17 +88,17 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                     ],
                                   ),
                                 ),
-                                Gap(5),
+                                Gap(getProportionateScreenHeight(5)),
                                 Text(widget.title,
                                     style: Styles.textcontentStyle),
-                                Spacer(),
+                                const Spacer(),
                                 if (widget.icon != null)
                                   Icon(
                                     widget.icon,
                                     color: Colors.white,
                                   ),
                                 if (widget.pressIcon != null)
-                                  widget.pressIcon ?? SizedBox()
+                                  widget.pressIcon ?? const SizedBox()
                               ],
                             ),
                           ),
@@ -135,7 +135,7 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                       child: Text(widget.subtitle ?? '',
                                           style: Styles.textlableStyle),
                                     ),
-                                    widget.bottomWidget ?? SizedBox()
+                                    widget.bottomWidget ?? const SizedBox()
                                   ],
                                 ),
                         ),

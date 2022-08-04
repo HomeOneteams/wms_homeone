@@ -79,7 +79,7 @@ class _SoloProductState extends State<SoloProduct> {
                                   'ดูตำแหน่ง',
                                   style: Styles.textcontentStyle,
                                 ),
-                                Icon(
+                                const Icon(
                                   Icons.pin_drop_rounded,
                                   color: Colors.white,
                                 )

@@ -83,7 +83,7 @@ class _SoloCauseState extends State<SoloCause> {
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   color: Styles.witeColor,
                   height: 49,
-                  child: DropdownCause(),
+                  child: const DropdownCause(),
                 ),
               ),
             ),

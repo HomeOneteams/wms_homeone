@@ -75,7 +75,7 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                         ),
                         Row(
                           children: [
-                            Container(
+                            SizedBox(
                               width: 30,
                               child: TextButton(
                                 onPressed: () => showDialog<String>(
@@ -89,7 +89,7 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                                         var width =
                                             MediaQuery.of(context).size.width;
 
-                                        return Container(
+                                        return SizedBox(
                                           height: height - 800,
                                           width: width - 60,
                                         );
@@ -117,10 +117,12 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                                         children: [
                                           Expanded(
                                             child: ClipRRect(
-                                              borderRadius: BorderRadius.only(
-                                                  topLeft: Radius.circular(14),
-                                                  bottomLeft:
-                                                      Radius.circular(14)),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                      topLeft:
+                                                          Radius.circular(14),
+                                                      bottomLeft:
+                                                          Radius.circular(14)),
                                               child: Container(
                                                 color: Styles.primaryColor,
                                                 child: TextButton(
@@ -170,7 +172,7 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                                 ),
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               width: 30,
                               child: TextButton(
                                 onPressed: () => showDialog<String>(
@@ -184,7 +186,7 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                                         var width =
                                             MediaQuery.of(context).size.width;
 
-                                        return Container(
+                                        return SizedBox(
                                           height: height - 800,
                                           width: width - 60,
                                         );
@@ -199,8 +201,7 @@ class _SunjiDeleteState extends State<SunjiDelete> {
                                           style: Styles.textcontentblackStyle,
                                           textAlign: TextAlign.center,
                                         ),
-                                        Gap(20),
-                                        Gap(20),
+                                        Gap(getProportionateScreenHeight(20)),
                                         Text(
                                           widget.subtitledelete,
                                           style: Styles.textcontentblackStyle,
