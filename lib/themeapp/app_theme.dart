@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:wms_homeone/size_config/size_config.dart';
-
 import 'themeapp_style.dart';
 
-ThemeData theme() {
+ThemeData theme({required BuildContext context}) {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: appBarTheme(),
@@ -21,11 +19,8 @@ InputDecorationTheme inputDecorationTheme() {
     gapPadding: 10,
   );
   return InputDecorationTheme(
-    // If  you are using latest version of flutter then lable text and hint text shown like this
-    // if you r using flutter less then 1.20.* then maybe this is not working properly
-    // if we are define our floatingLabelBehavior in our theme then it's not applayed
     floatingLabelBehavior: FloatingLabelBehavior.always,
-    contentPadding: EdgeInsets.symmetric(horizontal: 42, vertical: 20),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 42, vertical: 20),
     enabledBorder: outlineInputBorder,
     focusedBorder: outlineInputBorder,
     border: outlineInputBorder,
@@ -41,7 +36,11 @@ AppBarTheme appBarTheme() {
     color: Styles.mainColor,
     elevation: 0,
     brightness: Brightness.light,
+<<<<<<< HEAD
     iconTheme: IconThemeData(color: Colors.white, size: 20),
+=======
+    iconTheme: const IconThemeData(color: Colors.white, size: 20),
+>>>>>>> luffy
     textTheme: TextTheme(
       headline6: Styles.textcontentStyle,
     ),
