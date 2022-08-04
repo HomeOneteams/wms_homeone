@@ -27,7 +27,8 @@ class SoLoInputFeild extends StatefulWidget {
       this.showError = true,
       this.verticalPadding = 20,
       this.horizontalPadding = 12,
-      Key? key})
+      Key? key,
+      this.enabled})
       : super(key: key);
 
   final Function(String)? onChanged;
@@ -54,6 +55,7 @@ class SoLoInputFeild extends StatefulWidget {
   final bool Function(String)? validator;
   final bool showConfirmation;
   final bool showError;
+  final bool? enabled;
   final double verticalPadding;
   final double horizontalPadding;
 
@@ -190,13 +192,14 @@ class _SoLoInputFeildState extends State<SoLoInputFeild> {
             const SizedBox(height: 6),
           ],
           ClipRRect(
-            borderRadius: BorderRadius.circular(widget.borderRadius) ,
+            borderRadius: BorderRadius.circular(widget.borderRadius),
             child: TextField(
               focusNode: focusNode,
               controller: textEditingController,
               autofillHints: widget.autofillHints,
               keyboardType: widget.textInputType,
               autofocus: widget.autoFocus,
+              enabled: widget.enabled ?? true,
               onChanged: (val) {
                 setState(() {
                   hasError = false;
@@ -212,7 +215,6 @@ class _SoLoInputFeildState extends State<SoLoInputFeild> {
               obscureText: widget.obscureText,
               textInputAction: widget.textInputAction,
               decoration: InputDecoration(
-                
                 contentPadding: EdgeInsets.symmetric(
                     vertical: widget.verticalPadding,
                     horizontal: widget.horizontalPadding),

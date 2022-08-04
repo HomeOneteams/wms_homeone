@@ -7,7 +7,6 @@ import '../pages/menuthree/shoper_second_page.dart';
 import '../pages/menutwo/sunji_first_page.dart';
 import '../pages/menutwo/sunji_second_page.dart';
 import '../pages/munuone/page_fourth.dart';
-import '../pages/munuone/page_second.dart';
 import '../pages/munuone/page_third.dart';
 
 class Routers {
@@ -17,8 +16,6 @@ class Routers {
         return MaterialPageRoute(builder: (_) => const MenuPage());
       case '/MenuOne':
         return MaterialPageRoute(builder: (_) => const MenuOne());
-      case '/MenuOnePage2':
-        return MaterialPageRoute(builder: (_) => const MenuOnePageSecond());
       case '/MenuOnePageThird':
         return MaterialPageRoute(builder: (_) => const MenuOnePageThird());
       case '/MenuOnePageFourth':

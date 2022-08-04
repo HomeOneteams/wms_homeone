@@ -19,6 +19,8 @@ class LuffyMenu extends StatefulWidget {
     this.headColor,
     this.bottomHeight,
     this.bottomWidget,
+    this.padding,
+    this.mainAxisAlignment,
   }) : super(key: key);
   final String title;
   final String number;
@@ -31,6 +33,8 @@ class LuffyMenu extends StatefulWidget {
   final Widget? pressIcon;
   final Color? headColor;
   final double? bottomHeight;
+  final double? padding;
+  final MainAxisAlignment? mainAxisAlignment;
   final Widget? bottomWidget;
   @override
   State<LuffyMenu> createState() => _LuffyMenuState();
@@ -41,7 +45,7 @@ class _LuffyMenuState extends State<LuffyMenu> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(20),
+          horizontal: getProportionateScreenWidth(widget.padding ?? 20),
           vertical: getProportionateScreenHeight(20)),
       child: Column(
         children: [
@@ -122,22 +126,23 @@ class _LuffyMenuState extends State<LuffyMenu> {
                           color: Styles.witeColor,
                           alignment: widget.alignment ?? Alignment.center,
                           height: widget.bottomHeight ?? 49,
-                          child: widget.subtitle == null
-                              ? const SizedBox.shrink()
-                              : Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Padding(
+                          child: Column(
+                            mainAxisAlignment: widget.mainAxisAlignment ??
+                                MainAxisAlignment.center,
+                            children: [
+                              widget.subtitle == null
+                                  ? Padding(
                                       padding: EdgeInsets.only(
                                           left: widget.alignment == null
                                               ? 0
                                               : 10),
                                       child: Text(widget.subtitle ?? '',
                                           style: Styles.textlableStyle),
-                                    ),
-                                    widget.bottomWidget ?? const SizedBox()
-                                  ],
-                                ),
+                                    )
+                                  : const SizedBox.shrink(),
+                              widget.bottomWidget ?? const SizedBox()
+                            ],
+                          ),
                         ),
                       ),
                     ),

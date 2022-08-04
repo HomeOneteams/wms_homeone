@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
-import 'package:wms_homeone/components/storage/luffy_storage.dart';
 import 'package:wms_homeone/pages/munuone/components/cause/solo_cause.dart';
 import 'package:wms_homeone/pages/munuone/components/product_edit_num.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart';
@@ -36,11 +35,6 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
           children: [
             Column(
               children: [
-                const LuffyStorage(
-                    origin: 'ที่เก็บต้นทาง',
-                    destination: 'ที่เก็บปลายทาง',
-                    titleorigin: 'W1-Z05-1 พื้นที่รวม',
-                    titledestination: 'W1-Z05-1 พื้นที่รวม'),
                 Gap(getProportionateScreenHeight(20)),
                 const SoloEditProduct(
                   title: '1085407',

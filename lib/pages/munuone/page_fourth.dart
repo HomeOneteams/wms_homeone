@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button_alert.dart';
-import 'package:wms_homeone/components/storage/luffy_storage.dart';
 import 'package:wms_homeone/pages/munuone/components/product_edit_num.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart';
@@ -42,11 +41,6 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
               ],
             ),
             Gap(getProportionateScreenHeight(20)),
-            const LuffyStorage(
-                origin: 'ที่เก็บต้นทาง',
-                destination: 'ที่เก็บปลายทาง',
-                titleorigin: 'W1-Z05-1 พื้นที่รวม',
-                titledestination: 'W1-Z05-1 พื้นที่รวม'),
             Gap(getProportionateScreenHeight(20)),
             const SoloBox(
               title: 'หมายเหตุ',

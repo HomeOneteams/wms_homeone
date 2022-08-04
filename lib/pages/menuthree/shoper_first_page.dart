@@ -6,7 +6,6 @@ import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart'
 import 'package:wms_homeone/pages/munuone/components/soloproduct/solo_product_box.dart';
 
 import '../../components/appbar/appbar.dart';
-import '../../components/storage/luffy_storage.dart';
 import '../../services/navigator.dart';
 import '../../size_config/size_config.dart';
 import '../../themeapp/themeapp_style.dart';
@@ -41,11 +40,6 @@ class _ShoperFirstPageState extends State<ShoperFirstPage> {
               icon: Icons.article_rounded,
             ),
             Gap(getProportionateScreenHeight(20)),
-            const LuffyStorage(
-                origin: 'คลังต้นทาง',
-                destination: 'ที่เก็บต้นทาง',
-                titleorigin: 'W1-Z05-1 พื้นที่รวม',
-                titledestination: 'W1-Z05-1 พื้นที่รวม'),
             Gap(getProportionateScreenHeight(20)),
             const SoloBox(
               title: 'หมายเหตุ',
