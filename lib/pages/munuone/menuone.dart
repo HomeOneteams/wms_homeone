@@ -5,6 +5,7 @@ import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/components/input_feild.dart';
 import 'package:wms_homeone/pages/menu/components/luffy_menu.dart';
 import 'package:wms_homeone/pages/munuone/components/solo_list.dart';
+import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
 import 'package:wms_homeone/pages/munuone/components/soloproduct/solo_product_box.dart';
 import 'package:wms_homeone/services/navigator.dart';
 import 'package:wms_homeone/size_config/size_config.dart';
@@ -49,23 +50,23 @@ class _MenuOneState extends State<MenuOne> {
               Text('3 เอกสาร', style: Styles.textcontentblackStyle),
             ],
           ),
-          const SoloList(
-            number: "เลขที่เอกสาร",
-            subtitle: "X01-RI6405-00519",
+          Gap(getProportionateScreenHeight(20)),
+          const SoloDocument(
+            title: 'เลขที่เอกสาร',
+            subtitle: 'X01-RI6405-00519',
             icon: Icons.article_rounded,
-            title: '',
           ),
-          const SoloList(
-            number: "เลขที่เอกสาร",
-            subtitle: "X01-RI6405-00519",
+          Gap(getProportionateScreenHeight(20)),
+          const SoloDocument(
+            title: 'เลขที่เอกสาร',
+            subtitle: 'X01-RI6405-00519',
             icon: Icons.article_rounded,
-            title: '',
           ),
-          const SoloList(
-            number: "เลขที่เอกสาร",
-            subtitle: "X01-RI6405-00519",
+          Gap(getProportionateScreenHeight(20)),
+          const SoloDocument(
+            title: 'เลขที่เอกสาร',
+            subtitle: 'X01-RI6405-00519',
             icon: Icons.article_rounded,
-            title: '',
           ),
           Gap(getProportionateScreenHeight(100)),
           LuffyButton(
