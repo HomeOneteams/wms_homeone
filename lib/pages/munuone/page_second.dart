@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
+import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
 import '../../components/input_feild.dart';
@@ -62,7 +63,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: Container(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 3),
                                 color: Styles.mainColor,
                                 child: Text(
@@ -75,6 +76,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           )
                         ],
                       ),
+                      Gap(getProportionateScreenHeight(20)),
                       if (!_list['head']['isTest']) ...[
                         SoLoInputFeild(
                           borderRadius: 14,
@@ -141,19 +143,17 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           bottomWidget: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Container(
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Text(
-                                        'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ',
-                                        textAlign: TextAlign.center,
-                                      ),
+                              Row(
+                                children: const [
+                                  Expanded(
+                                    child: Text(
+                                      'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ',
+                                      textAlign: TextAlign.center,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                              Gap(10),
+                              Gap(getProportionateScreenHeight(10)),
                               Column(
                                 children: [
                                   Padding(
@@ -161,7 +161,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                         horizontal:
                                             getProportionateScreenWidth(10)),
                                     child: Row(
-                                      children: [
+                                      children: const [
                                         Expanded(
                                             child: Text('หน่วย      PC~ชิ้น')),
                                         Expanded(
@@ -177,7 +177,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                         horizontal:
                                             getProportionateScreenWidth(10)),
                                     child: Row(
-                                      children: [
+                                      children: const [
                                         Expanded(
                                             child: Text(
                                           'หน่วย      PC~ชิ้น',
@@ -210,7 +210,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                       pressright: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (_) => MenuOnePageSecond(data: data))),
+                              builder: (_) => MenuOnePageThird(data: data))),
                       titleright: 'ยืนยัน',
                     ),
                   ],
@@ -302,8 +302,8 @@ class LuffySendTo extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           child: Container(
               color: color,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 2),
-              child: Icon(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              child: const Icon(
                 Icons.compare_arrows_rounded,
                 color: Colors.white,
               )),

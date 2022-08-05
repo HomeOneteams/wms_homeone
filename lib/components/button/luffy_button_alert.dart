@@ -92,9 +92,12 @@ class _LuffyAlertState extends State<LuffyAlert> {
                                 ),
                                 Gap(20),
                                 Gap(20),
-                                Text(
-                                  widget.subtitlalert,
-                                  style: Styles.textcontentblackStyle,
+                                Center(
+                                  child: Text(
+                                    widget.subtitlalert,
+                                    style: Styles.textcontentblackStyle,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 )
                               ],
                             ),

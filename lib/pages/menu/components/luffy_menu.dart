@@ -137,7 +137,7 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                               ? 0
                                               : 10),
                                       child: Text(widget.subtitle ?? '',
-                                          style: Styles.textlableStyle),
+                                          style: Styles.textcontentblackStyle),
                                     )
                                   : const SizedBox.shrink(),
                               widget.bottomWidget ?? const SizedBox()

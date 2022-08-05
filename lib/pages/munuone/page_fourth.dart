@@ -7,6 +7,7 @@ import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart'
 import 'package:wms_homeone/pages/munuone/components/soloproduct/solo_product_box.dart';
 
 import '../../components/appbar/appbar.dart';
+import '../../components/input_feild.dart';
 import '../../services/navigator.dart';
 import '../../size_config/size_config.dart';
 import '../../themeapp/themeapp_style.dart';
@@ -41,6 +42,37 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
               ],
             ),
             Gap(getProportionateScreenHeight(20)),
+            LuffySendTo(
+              start: 'ที่เก็บต้นทาง',
+              finals: 'ที่เก็บปลายทาง',
+              color: Styles.successColor,
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: SoLoInputFeild(
+                    borderRadius: 10,
+                    verticalPadding: 10,
+                    fillColor: Styles.witeColor,
+                    hintText: "",
+                    prefixIconData: Icons.search,
+                    accentColor: Colors.indigo,
+                  ),
+                ),
+                Gap(getProportionateScreenHeight(20)),
+                Expanded(
+                  child: SoLoInputFeild(
+                    borderRadius: 10,
+                    verticalPadding: 10,
+                    fillColor: Styles.witeColor,
+                    hintText: "",
+                    prefixIconData: Icons.search,
+                    accentColor: Colors.indigo,
+                  ),
+                )
+              ],
+            ),
+            Gap(getProportionateScreenHeight(20)),
             Gap(getProportionateScreenHeight(20)),
             const SoloBox(
               title: 'หมายเหตุ',
@@ -72,6 +104,48 @@ class _MenuOnePageFourthState extends State<MenuOnePageFourth> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class LuffySendTo extends StatelessWidget {
+  final String start;
+  final String finals;
+  final Color color;
+
+  const LuffySendTo({
+    Key? key,
+    required this.start,
+    required this.finals,
+    required this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Text(
+            start,
+            textAlign: TextAlign.center,
+          ),
+        ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(14),
+          child: Container(
+              color: color,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              child: const Icon(
+                Icons.compare_arrows_rounded,
+                color: Colors.white,
+              )),
+        ),
+        Expanded(
+            child: Text(
+          finals,
+          textAlign: TextAlign.center,
+        )),
+      ],
     );
   }
 }
