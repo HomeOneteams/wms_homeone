@@ -130,16 +130,15 @@ class _LuffyMenuState extends State<LuffyMenu> {
                             mainAxisAlignment: widget.mainAxisAlignment ??
                                 MainAxisAlignment.center,
                             children: [
-                              widget.subtitle == null
-                                  ? Padding(
+                              Padding(
                                       padding: EdgeInsets.only(
                                           left: widget.alignment == null
                                               ? 0
                                               : 10),
                                       child: Text(widget.subtitle ?? '',
                                           style: Styles.textcontentblackStyle),
-                                    )
-                                  : const SizedBox.shrink(),
+                                    ),
+                                 
                               widget.bottomWidget ?? const SizedBox()
                             ],
                           ),

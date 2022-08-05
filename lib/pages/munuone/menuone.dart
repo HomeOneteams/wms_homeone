@@ -19,6 +19,13 @@ class MenuOne extends StatefulWidget {
 }
 
 class _MenuOneState extends State<MenuOne> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    print("INITSTATE");
+    super.initState();
+  }
+
   var data = [];
   @override
   Widget build(BuildContext context) {

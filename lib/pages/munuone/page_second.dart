@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
-import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_document.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
@@ -12,9 +9,6 @@ import '../../services/navigator.dart';
 import '../../size_config/size_config.dart';
 import '../../themeapp/themeapp_style.dart';
 import '../menu/components/luffy_menu.dart';
-import 'components/solo_list.dart';
-import 'components/solobox/solo_box_note.dart';
-import 'components/soloproduct/solo_product_box.dart';
 
 class MenuOnePageSecond extends StatefulWidget {
   const MenuOnePageSecond({Key? key, required this.data}) : super(key: key);
@@ -24,9 +18,22 @@ class MenuOnePageSecond extends StatefulWidget {
 }
 
 class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
+  late List<TextEditingController> controller =[];
+   var data ;
+  @override
+  void initState() {
+    // TODO: implement initState
+    List.generate(widget.data.length, (index) => controller.add(TextEditingController()));
+
+    print(controller.length);
+  data = widget.data;
+    super.initState();
+    print("InitState");
+  }
+
   @override
   Widget build(BuildContext context) {
-    var data = widget.data;
+    print("BUILD");
     return Scaffold(
       backgroundColor: Styles.primaryColor,
       appBar: LuffyAppBar(
@@ -67,7 +74,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                     horizontal: 10, vertical: 3),
                                 color: Styles.mainColor,
                                 child: Text(
-                                  "${!_list['head']['isTest'] ? "hide" : "show"}",
+                                  "${_list['head']['isTest'] ? "hide" : "show"}",
                                   style: Styles.textcontentStyle
                                       .copyWith(fontSize: 14),
                                 ),
@@ -77,48 +84,19 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                         ],
                       ),
                       Gap(getProportionateScreenHeight(20)),
-                      if (!_list['head']['isTest']) ...[
+                      if (_list['head']['isTest']) ...[
                         SoLoInputFeild(
                           borderRadius: 14,
                           verticalPadding: 15,
+                          textEditingController: controller[index],                          
                           onChanged: (str) {
-                            print(str);
+                            print("${controller[index].text} ${index} docNo ${_list['head']['docFormat']}");
+                            
                           },
                           fillColor: Styles.witeColor,
-                          hintText: "ค้นหา ใบขอโอนสินค้า หรือ ใบรับสินค้า",
+                          hintText: "สแกน/ค้นหา บาร์โค้ด รหัส ชื่อสินค้า",
                           prefixIconData: Icons.search,
                           accentColor: Colors.indigo,
-                        ),
-                        Gap(getProportionateScreenHeight(20)),
-                        LuffySendTo(
-                            start: 'ที่เก็บต้นทาง',
-                            finals: 'ที่เก็บปลายทาง',
-                            color: Styles.successColor),
-                        Gap(getProportionateScreenHeight(20)),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: SoLoInputFeild(
-                                borderRadius: 10,
-                                verticalPadding: 10,
-                                fillColor: Styles.witeColor,
-                                hintText: "${_list['head']['branchCode']}",
-                                prefixIconData: Icons.search,
-                                accentColor: Colors.indigo,
-                              ),
-                            ),
-                            Gap(getProportionateScreenHeight(20)),
-                            Expanded(
-                              child: SoLoInputFeild(
-                                borderRadius: 10,
-                                verticalPadding: 10,
-                                fillColor: Styles.witeColor,
-                                hintText: "${_list['head']['branchCode']}",
-                                prefixIconData: Icons.search,
-                                accentColor: Colors.indigo,
-                              ),
-                            )
-                          ],
                         ),
                         LuffyMenu(
                           padding: 0,
@@ -127,7 +105,6 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           subtitle: '${_list['head']['Remark']}',
                           icon: Icons.article_rounded,
                         ),
-                        Gap(getProportionateScreenHeight(20)),
                         LuffyMenu(
                           padding: 0,
                           title: '',
@@ -135,10 +112,12 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           subtitle: '${_list['head']['DocRef']}',
                           icon: Icons.article_rounded,
                         ),
-                        LuffyMenu(
+                        ...List.generate((_list['head']['detail'] as List).length, (index) {
+                          var detail = _list['head']['detail'][index];
+                          return LuffyMenu(
                           padding: 0,
                           title: '',
-                          number: '1085407',
+                          number: '${detail['itemCode']}',
                           mainAxisAlignment: MainAxisAlignment.start,
                           bottomWidget: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -156,6 +135,37 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                               Gap(getProportionateScreenHeight(10)),
                               Column(
                                 children: [
+                                  LuffySendTo(
+                                      start: 'ที่เก็บต้นทาง',
+                                      finals: 'ที่เก็บปลายทาง',
+                                      color: Styles.successColor),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: SoLoInputFeild(
+                                          borderRadius: 10,
+                                          verticalPadding: 10,
+                                          fillColor: Styles.witeColor,
+                                          hintText:
+                                              "${_list['head']['branchCode']}",
+                                          prefixIconData: Icons.search,
+                                          accentColor: Colors.indigo,
+                                        ),
+                                      ),
+                                      Gap(getProportionateScreenHeight(20)),
+                                      Expanded(
+                                        child: SoLoInputFeild(
+                                          borderRadius: 10,
+                                          verticalPadding: 10,
+                                          fillColor: Styles.witeColor,
+                                          hintText:
+                                              "${_list['head']['branchCode']}",
+                                          prefixIconData: Icons.search,
+                                          accentColor: Colors.indigo,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                   Padding(
                                     padding: EdgeInsets.symmetric(
                                         horizontal:
@@ -192,8 +202,10 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           ),
                           icon: Icons.article_rounded,
                           headColor: Styles.boxredColor,
-                          bottomHeight: 140,
-                        ),
+                          bottomHeight: 170,
+                        );
+                        }
+                     )
                       ]
                     ],
                   );
@@ -207,10 +219,9 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                     LuffyButton(
                       titleleft: 'ยกเลิก',
                       pressleft: () => sendToBack(context: context),
-                      pressright: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => MenuOnePageThird(data: data))),
+                      pressright: () => {
+                        controller.forEach((element) { print(element.text); })
+                      },
                       titleright: 'ยืนยัน',
                     ),
                   ],
