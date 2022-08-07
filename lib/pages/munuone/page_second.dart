@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
+import 'package:wms_homeone/data.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
@@ -9,6 +10,8 @@ import '../../services/navigator.dart';
 import '../../size_config/size_config.dart';
 import '../../themeapp/themeapp_style.dart';
 import '../menu/components/luffy_menu.dart';
+import 'components/solobox/solo_box_document.dart';
+import 'components/soloproduct/solo_product_box.dart';
 
 class MenuOnePageSecond extends StatefulWidget {
   const MenuOnePageSecond({Key? key, required this.data}) : super(key: key);
@@ -18,19 +21,20 @@ class MenuOnePageSecond extends StatefulWidget {
 }
 
 class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
-  late List<TextEditingController> controller =[];
-   var data ;
+  late List<TextEditingController> controller = [];
   @override
   void initState() {
     // TODO: implement initState
-    List.generate(widget.data.length, (index) => controller.add(TextEditingController()));
+    List.generate(
+        widget.data.length, (index) => controller.add(TextEditingController()));
 
     print(controller.length);
-  data = widget.data;
+    data = widget.data;
     super.initState();
     print("InitState");
   }
 
+  var data = [];
   @override
   Widget build(BuildContext context) {
     print("BUILD");
@@ -88,16 +92,19 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                         SoLoInputFeild(
                           borderRadius: 14,
                           verticalPadding: 15,
-                          textEditingController: controller[index],                          
+                          textEditingController: controller[index],
                           onChanged: (str) {
-                            print("${controller[index].text} ${index} docNo ${_list['head']['docFormat']}");
-                            
+                            setState(() {});
+                            print(
+                                "${controller[index].text} ${index} docNo ${_list['head']['docFormat']}");
                           },
                           fillColor: Styles.witeColor,
                           hintText: "สแกน/ค้นหา บาร์โค้ด รหัส ชื่อสินค้า",
                           prefixIconData: Icons.search,
                           accentColor: Colors.indigo,
                         ),
+                        Gap(getProportionateScreenHeight(20)),
+                        
                         LuffyMenu(
                           padding: 0,
                           title: '',
@@ -112,103 +119,122 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           subtitle: '${_list['head']['DocRef']}',
                           icon: Icons.article_rounded,
                         ),
-                        ...List.generate((_list['head']['detail'] as List).length, (index) {
+                        ...List.generate(
+                            (_list['head']['detail'] as List).length, (index) {
                           var detail = _list['head']['detail'][index];
                           return LuffyMenu(
-                          padding: 0,
-                          title: '',
-                          number: '${detail['itemCode']}',
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          bottomWidget: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: const [
-                                  Expanded(
-                                    child: Text(
-                                      'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ',
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Gap(getProportionateScreenHeight(10)),
-                              Column(
-                                children: [
-                                  LuffySendTo(
-                                      start: 'ที่เก็บต้นทาง',
-                                      finals: 'ที่เก็บปลายทาง',
-                                      color: Styles.successColor),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: SoLoInputFeild(
-                                          borderRadius: 10,
-                                          verticalPadding: 10,
-                                          fillColor: Styles.witeColor,
-                                          hintText:
-                                              "${_list['head']['branchCode']}",
-                                          prefixIconData: Icons.search,
-                                          accentColor: Colors.indigo,
-                                        ),
+                            padding: 0,
+                            title: '',
+                            number: '${detail['itemCode']}',
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            bottomWidget: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: const [
+                                    Expanded(
+                                      child: Text(
+                                        'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ',
+                                        textAlign: TextAlign.center,
                                       ),
-                                      Gap(getProportionateScreenHeight(20)),
-                                      Expanded(
-                                        child: SoLoInputFeild(
-                                          borderRadius: 10,
-                                          verticalPadding: 10,
-                                          fillColor: Styles.witeColor,
-                                          hintText:
-                                              "${_list['head']['branchCode']}",
-                                          prefixIconData: Icons.search,
-                                          accentColor: Colors.indigo,
+                                    ),
+                                  ],
+                                ),
+                                Gap(getProportionateScreenHeight(10)),
+                                Column(
+                                  children: [
+                                    LuffySendTo(
+                                        start: 'ที่เก็บต้นทาง',
+                                        finals: 'ที่เก็บปลายทาง',
+                                        color: Styles.successColor),
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: SoLoInputFeild(
+                                            borderRadius: 10,
+                                            verticalPadding: 10,
+                                            fillColor: Styles.witeColor,
+                                            hintText:
+                                                "${_list['head']['branchCode']}",
+                                            prefixIconData: Icons.search,
+                                            accentColor: Colors.indigo,
+                                          ),
                                         ),
-                                      )
+                                        Gap(getProportionateScreenHeight(20)),
+                                        Expanded(
+                                          child: SoLoInputFeild(
+                                            borderRadius: 10,
+                                            verticalPadding: 10,
+                                            fillColor: Styles.witeColor,
+                                            hintText:
+                                                "${_list['head']['branchCode']}",
+                                            prefixIconData: Icons.search,
+                                            accentColor: Colors.indigo,
+                                          ),
+                                        )
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              getProportionateScreenWidth(10)),
+                                      child: Row(
+                                        children: const [
+                                          Expanded(
+                                              child:
+                                                  Text('หน่วย      PC~ชิ้น')),
+                                          Expanded(
+                                              child: Text(
+                                            'หน่วย      PC~ชิ้น',
+                                            textAlign: TextAlign.end,
+                                          )),
+                                        ],
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              getProportionateScreenWidth(10)),
+                                      child: Row(
+                                        children: const [
+                                          Expanded(
+                                              child: Text(
+                                            'หน่วย      PC~ชิ้น',
+                                            textAlign: TextAlign.end,
+                                          )),
+                                        ],
+                                      ),
+                                    ),
+                                    
+                                  ],
+                                )
+                                
+                              ],
+                            ),
+                            icon: Icons.article_rounded,
+                            headColor: Styles.boxredColor,
+                            bottomHeight: 170,
+                          );
+                        })
+                      ],
+                      if (data.isNotEmpty)
+                          ...List.generate(
+                              (data).length,
+                              (index) => Column(
+                                    children: [
+                                      SoloProduct(
+                                          title: 'title',
+                                          subtitle: 'subtitle',
+                                          subtitleunit: 'subtitleunit',
+                                          requestnum: 'requestnum',
+                                          allnum: 'allnum'),
+                                      Gap(getProportionateScreenHeight(20)),
                                     ],
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            getProportionateScreenWidth(10)),
-                                    child: Row(
-                                      children: const [
-                                        Expanded(
-                                            child: Text('หน่วย      PC~ชิ้น')),
-                                        Expanded(
-                                            child: Text(
-                                          'หน่วย      PC~ชิ้น',
-                                          textAlign: TextAlign.end,
-                                        )),
-                                      ],
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        horizontal:
-                                            getProportionateScreenWidth(10)),
-                                    child: Row(
-                                      children: const [
-                                        Expanded(
-                                            child: Text(
-                                          'หน่วย      PC~ชิ้น',
-                                          textAlign: TextAlign.end,
-                                        )),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          icon: Icons.article_rounded,
-                          headColor: Styles.boxredColor,
-                          bottomHeight: 170,
-                        );
-                        }
-                     )
-                      ]
+                                  )),
                     ],
+                    
                   );
+                  
                 }),
                 Gap(getProportionateScreenHeight(50)),
               ]),
@@ -220,7 +246,9 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                       titleleft: 'ยกเลิก',
                       pressleft: () => sendToBack(context: context),
                       pressright: () => {
-                        controller.forEach((element) { print(element.text); })
+                        controller.forEach((element) {
+                          print(element.text);
+                        })
                       },
                       titleright: 'ยืนยัน',
                     ),
