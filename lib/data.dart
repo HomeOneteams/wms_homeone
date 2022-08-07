@@ -1,10 +1,12 @@
 var demoData = [
   {
     "head": {
+      "statusSuccess":false,
+      "statusSearch":false,
       "isTest": false,
       "docDate": "2022-03-02 10:02:30",
       "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
+      "docFormat": "X00-RLA6406-0001",
       "InquiryType": 1,
       "VatType": 1,
       "CustCode": "144904",
@@ -25,7 +27,9 @@ var demoData = [
       "taxDocDate": "2022-03-02",
       "DocRef": "X01-POV6506-00002-001",
       "detail": [
-        {
+        { "eventQty":0,
+            "statusSuccess":false,
+      "statusSearch":false,
           "itemCode": "1025271",
           "itemName":
               "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
@@ -44,7 +48,7 @@ var demoData = [
           "sumAmountExcludeVat": 119731.07,
           "RefDocNo": "X01-POV6502-00006",
           "RefDocDate": "2022-2-5",
-          "RefRow": 0,
+          "remark":"","RefRow": 0,
           "RefRemark":
               "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
         }
@@ -53,6 +57,8 @@ var demoData = [
   },
   {
     "head": {
+        "statusSuccess":false,
+      "statusSearch":false,
       "isTest": false,
       "docDate": "2022-03-02 10:02:30",
       "DeliveryDate": "2021-03-1",
@@ -77,7 +83,10 @@ var demoData = [
       "taxDocDate": "2022-03-02",
       "DocRef": "X01-POV6506-00002-001",
       "detail": [
-        {
+        {   
+          "eventQty":0,
+           "statusSuccess":false,
+          "statusSearch":false,
           "itemCode": "1025271",
           "itemName":
               "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
@@ -96,40 +105,13 @@ var demoData = [
           "sumAmountExcludeVat": 119731.07,
           "RefDocNo": "X01-POV6502-00006",
           "RefDocDate": "2022-2-5",
-          "RefRow": 0,
+          "remark":"","RefRow": 0,
           "RefRemark":
               "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
+        },
+        { "eventQty":0,
+            "statusSuccess":false,
+      "statusSearch":false,
           "itemCode": "1025271",
           "itemName":
               "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
@@ -139,7 +121,7 @@ var demoData = [
           "discountWord": null,
           "discountAmount": 0.0,
           "SumAmount": 128112.25,
-          "lineNumber": 0,
+          "lineNumber": 1,
           "whCode": "X01",
           "shelfCode": "W2-Z03-2",
           "priceGuid": null,
@@ -148,272 +130,15 @@ var demoData = [
           "sumAmountExcludeVat": 119731.07,
           "RefDocNo": "X01-POV6502-00006",
           "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
+          "remark":"","RefRow": 0,
           "RefRemark":
               "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
         },
         {
-          "itemCode": "1025271",
+          "eventQty":0,
+          "statusSuccess":false,
+          "statusSearch":false,
+          "itemCode": "1025272",
           "itemName":
               "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
           "unitCode": "LN",
@@ -422,7 +147,7 @@ var demoData = [
           "discountWord": null,
           "discountAmount": 0.0,
           "SumAmount": 128112.25,
-          "lineNumber": 0,
+          "lineNumber": 2,
           "whCode": "X01",
           "shelfCode": "W2-Z03-2",
           "priceGuid": null,
@@ -432,156 +157,7 @@ var demoData = [
           "RefDocNo": "X01-POV6502-00006",
           "RefDocDate": "2022-2-5",
           "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": false,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        }
-      ]
-    }
-  },
-  {
-    "head": {
-      "isTest": true,
-      "docDate": "2022-03-02 10:02:30",
-      "DeliveryDate": "2021-03-1",
-      "docFormat": "X00-RLA6406-0000",
-      "InquiryType": 1,
-      "VatType": 1,
-      "CustCode": "144904",
-      "branchCode": "X01",
-      "departCode": "001",
-      "creatorCode": "10862",
-      "CreditDay": 45,
-      "VatRate": 7.0,
-      "TotalValue": 128112.25,
-      "discountWord": "",
-      "TotalDiscount": 0.0,
-      "TotalVatValue": 8381.18,
-      "TotalAmount": 128112.25,
-      "Remark": "ทดอบ MIS API WMS",
-      "TotalBeforeVat": 119731.07,
-      "totalAfterVat": 128112.25,
-      "taxDocNo": "123456789",
-      "taxDocDate": "2022-03-02",
-      "DocRef": "X01-POV6506-00002-001",
-      "detail": [
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        },
-        {
-          "itemCode": "1025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
-          "RefRemark":
-              "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
-        },
-        {
-          "itemCode": "2025271",
-          "itemName":
-              "*** เหล็กข้ออ้อย SD40 25MMx10M โรงใหญ่ ตรง SKY นน.38.53กก.@19บ./กก.(รวมภาษีอีก7%)*35",
-          "unitCode": "LN",
-          "qty": 175.00,
-          "price": 732.070,
-          "discountWord": null,
-          "discountAmount": 0.0,
-          "SumAmount": 128112.25,
-          "lineNumber": 0,
-          "whCode": "X01",
-          "shelfCode": "W2-Z03-2",
-          "priceGuid": null,
-          "priceExcludeVat": 684.18,
-          "totalVatValue": 8381.18,
-          "sumAmountExcludeVat": 119731.07,
-          "RefDocNo": "X01-POV6502-00006",
-          "RefDocDate": "2022-2-5",
-          "RefRow": 0,
+          "remark":"",
           "RefRemark":
               "สต้อกขายโครงการ ราคารวมภาษีอีก7%  เครดิต 60 วัน รับเองที่โรงงาน  X01-PR6401-00018 นน.6.7 ตัน"
         },

@@ -8,7 +8,6 @@ import '../pages/menuthree/shoper_second_page.dart';
 import '../pages/menutwo/sunji_first_page.dart';
 import '../pages/menutwo/sunji_second_page.dart';
 import '../pages/munuone/page_fourth.dart';
-import '../pages/munuone/page_third.dart';
 
 class Routers {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -17,11 +16,7 @@ class Routers {
         return MaterialPageRoute(builder: (_) => const MenuPage());
       case '/MenuOne':
         return MaterialPageRoute(builder: (_) => const MenuOne());
-      case '/MenuOnePageThird':
-        return MaterialPageRoute(
-            builder: (_) => const MenuOnePageThird(
-                  data: [],
-                ));
+   
       case '/MenuOnePageFourth':
         return MaterialPageRoute(builder: (_) => const MenuOnePageFourth());
       case '/SunjiFirstPage':

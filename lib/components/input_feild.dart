@@ -27,10 +27,11 @@ class SoLoInputFeild extends StatefulWidget {
       this.showError = true,
       this.verticalPadding = 20,
       this.horizontalPadding = 12,
+      this.onSubmitted,
       Key? key,
       this.enabled})
       : super(key: key);
-
+  final Function(String)? onSubmitted;
   final Function(String)? onChanged;
   final TextEditingController? textEditingController;
   final Iterable<String>? autofillHints;
@@ -43,7 +44,7 @@ class SoLoInputFeild extends StatefulWidget {
   final String? hintText;
   final String? labelText;
   final String? errorText;
-
+  
   /// Text placed below the text field
   final String? helperText;
   final bool showLabelAboveTextField;
@@ -200,6 +201,7 @@ class _SoLoInputFeildState extends State<SoLoInputFeild> {
               keyboardType: widget.textInputType,
               autofocus: widget.autoFocus,
               enabled: widget.enabled ?? true,
+              onSubmitted: widget.onSubmitted,
               onChanged: (val) {
                 setState(() {
                   hasError = false;

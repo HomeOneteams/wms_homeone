@@ -21,23 +21,9 @@ class MenuOnePageSecond extends StatefulWidget {
 }
 
 class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
-  late List<TextEditingController> controller = [];
-  @override
-  void initState() {
-    // TODO: implement initState
-    List.generate(
-        widget.data.length, (index) => controller.add(TextEditingController()));
-
-    print(controller.length);
-    data = widget.data;
-    super.initState();
-    print("InitState");
-  }
-
-  var data = [];
   @override
   Widget build(BuildContext context) {
-    print("BUILD");
+    var data = widget.data;
     return Scaffold(
       backgroundColor: Styles.primaryColor,
       appBar: LuffyAppBar(
@@ -47,56 +33,94 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
           ),
           title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (PP-RI)"),
       body: Padding(
-          padding: EdgeInsets.all(getProportionateScreenHeight(20)),
+          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenHeight(20)),
           child: Stack(
             children: [
               ListView(children: [
-                Gap(getProportionateScreenHeight(20)),
+                // Gap(getProportionateScreenHeight(20)),
                 ...List.generate((data).length, (index) {
                   var _list = data[index];
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Gap(getProportionateScreenHeight(20)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${_list['head']['docFormat']}',
-                            style: Styles.textcontentblackStyle,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              _list['head']['isTest'] =
-                                  !_list['head']['isTest'];
-                              setState(() {});
-                            },
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
-                                color: Styles.mainColor,
-                                child: Text(
-                                  "${_list['head']['isTest'] ? "hide" : "show"}",
-                                  style: Styles.textcontentStyle
-                                      .copyWith(fontSize: 14),
-                                ),
+                      Gap(getProportionateScreenHeight(10)),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(14),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(20)),
+                          color: (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)? Colors.white:Styles.successColor,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                '  ${_list['head']['docFormat']}',
+                                style: Styles.textcontentblackStyle.copyWith(color:  (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)?Colors.black:Colors.white),
                               ),
-                            ),
-                          )
-                        ],
+                              GestureDetector(
+                                onTap: () {
+                                  _list['head']['isTest'] =
+                                      !_list['head']['isTest'];
+                                  setState(() {});
+                                },
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 3),
+                                    color: Styles.mainColor,
+                                    child: Text(
+                                      "${_list['head']['isTest'] ? "hide" : "show"}",
+                                      style: Styles.textcontentStyle
+                                          .copyWith(fontSize: 14),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                      Gap(getProportionateScreenHeight(20)),
+                      Gap(getProportionateScreenHeight(!_list['head']['isTest']?0:20)),
                       if (_list['head']['isTest']) ...[
                         SoLoInputFeild(
                           borderRadius: 14,
                           verticalPadding: 15,
-                          textEditingController: controller[index],
+                          onSubmitted: (str) async {
+                            var results = (_list['head']["detail"] as List)
+                                .where((element) =>
+                                    element["itemCode"] == str ||
+                                    element["itemName"] == str)
+                                .toList();
+
+                            // print(results);
+                            results.asMap().forEach((key, value) {
+                              updateStatusSearchItem(
+                                  index: index,
+                                  indexdetail: value["lineNumber"]);
+                             
+                            });
+                            var res = await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (_) => MenuOnePageThird(
+                                          data: data,
+                                          index: index,
+                                        )));
+                            
+                              results.asMap().forEach((key, value) {
+                                updateStatusSearchItem(
+                                    index: index,
+                                    indexdetail: value["lineNumber"],
+                                    status: false);
+                                
+                              });
+                           
+                            if (res == 'success') {
+                              setState(() {});
+                            }
+                          },
                           onChanged: (str) {
-                            setState(() {});
-                            print(
-                                "${controller[index].text} ${index} docNo ${_list['head']['docFormat']}");
+                            //
                           },
                           fillColor: Styles.witeColor,
                           hintText: "สแกน/ค้นหา บาร์โค้ด รหัส ชื่อสินค้า",
@@ -104,7 +128,6 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           accentColor: Colors.indigo,
                         ),
                         Gap(getProportionateScreenHeight(20)),
-                        
                         LuffyMenu(
                           padding: 0,
                           title: '',
@@ -124,6 +147,9 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           var detail = _list['head']['detail'][index];
                           return LuffyMenu(
                             padding: 0,
+                            headColor: detail['statusSuccess']
+                                ? Styles.successColor
+                                : Styles.boxredColor,
                             title: '',
                             number: '${detail['itemCode']}',
                             mainAxisAlignment: MainAxisAlignment.start,
@@ -205,38 +231,19 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                         ],
                                       ),
                                     ),
-                                    
                                   ],
                                 )
-                                
                               ],
                             ),
                             icon: Icons.article_rounded,
-                            headColor: Styles.boxredColor,
                             bottomHeight: 170,
                           );
                         })
                       ],
-                      if (data.isNotEmpty)
-                          ...List.generate(
-                              (data).length,
-                              (index) => Column(
-                                    children: [
-                                      SoloProduct(
-                                          title: 'title',
-                                          subtitle: 'subtitle',
-                                          subtitleunit: 'subtitleunit',
-                                          requestnum: 'requestnum',
-                                          allnum: 'allnum'),
-                                      Gap(getProportionateScreenHeight(20)),
-                                    ],
-                                  )),
                     ],
-                    
                   );
-                  
                 }),
-                Gap(getProportionateScreenHeight(50)),
+                Gap(getProportionateScreenHeight(70)),
               ]),
               if (data.isNotEmpty)
                 Column(
@@ -245,13 +252,10 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                     LuffyButton(
                       titleleft: 'ยกเลิก',
                       pressleft: () => sendToBack(context: context),
-                      pressright: () => {
-                        controller.forEach((element) {
-                          print(element.text);
-                        })
-                      },
+                      pressright: () => {},
                       titleright: 'ยืนยัน',
                     ),
+                    Gap(getProportionateScreenHeight(20)),
                   ],
                 )
             ],
@@ -312,6 +316,23 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
       //   ),
       // ),
     );
+  }
+
+  void updateStatusSearchItem(
+      {required int index, required indexdetail, bool? status}) {
+    print("Params == >${indexdetail}");
+    final int _index = (widget.data[index]["head"]["detail"] as List)
+        .indexWhere((element) => element["lineNumber"] == indexdetail);
+    (widget.data[index]["head"]["detail"] as List).forEach((element) {
+      print("Element ==> ${element["lineNumber"]}");
+    });
+    print("Find index ==> $_index");
+    print("Header index ==> $index");
+    if (_index != -1) {
+      widget.data[index]["head"]["statusSearch"] = status ?? true;
+      widget.data[index]["head"]["detail"][_index]["statusSearch"] =
+          status ?? true;
+    }
   }
 }
 

@@ -139,7 +139,7 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                           style: Styles.textcontentblackStyle),
                                     ),
                                  
-                              widget.bottomWidget ?? const SizedBox()
+                              Expanded(child: widget.bottomWidget ?? const SizedBox())
                             ],
                           ),
                         ),
