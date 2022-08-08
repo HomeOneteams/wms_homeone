@@ -38,8 +38,12 @@ class _DropdownCauseState extends State<DropdownCause> {
           });
         },
         isExpanded: true,
-        items: ['เลือกสาเหตุที่จัดได้ไม่ครบ', 'PC~ชุด', 'ST~ชิ้น', 'ST~ชุด']
-            .map<DropdownMenuItem<String>>((String value) {
+        items: [
+          'เลือกสาเหตุที่จัดได้ไม่ครบ',
+          'สินค้าชำรุด',
+          'สินค้ามีจำนวนน้อยกว่าจำนวนที่โอน',
+          'รอสินค้า'
+        ].map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Center(child: Text(value)),

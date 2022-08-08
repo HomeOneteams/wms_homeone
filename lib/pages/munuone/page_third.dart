@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/pages/menu/components/luffy_menu.dart';
 import 'package:wms_homeone/pages/munuone/components/cause/solo_cause.dart';
+import 'package:wms_homeone/pages/munuone/components/dropdown/solo_cause_dropdown.dart';
 import 'package:wms_homeone/pages/munuone/components/product_edit_num.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart';
 import 'package:wms_homeone/size_config/size_config.dart';
@@ -32,7 +33,10 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
     List.generate(
         widget.data[widget.index]["head"]["detail"].length,
         (index) => {
-              controller.add(TextEditingController(text: widget.data[widget.index]["head"]["detail"][index]["eventQty"].toString())),
+              controller.add(TextEditingController(
+                  text: widget.data[widget.index]["head"]["detail"][index]
+                          ["eventQty"]
+                      .toString())),
               remark.add(TextEditingController(text: ""))
             });
     super.initState();
@@ -96,7 +100,6 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                   //     ),
                                   //   ),
                                   // )
-                               
                                 ],
                               ),
                               Gap(getProportionateScreenHeight(20)),
@@ -134,9 +137,6 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                   Gap(getProportionateScreenHeight(
                                                       10)),
                                                   Column(
-                                               
-                                                
-
                                                     children: [
                                                       LuffySendTo(
                                                           start:
@@ -229,7 +229,6 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                                   SoLoInputFeild(
                                                                 onSubmitted:
                                                                     (p0) {
-
                                                                   (widget.data[widget.index]["head"]
                                                                               [
                                                                               "detail"]
@@ -289,6 +288,7 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                         .toString()) >=
                                                     0)) ...[
                                               LuffyMenu(
+                                                bottomWidget: DropdownCause(),
                                                 padding: 0,
                                                 title: "",
                                                 number: "สาเหตุที่จัดได้ไม่ครบ",
@@ -303,15 +303,13 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                   textEditingController:
                                                       remark[index],
                                                 ),
-                                              )
+                                              ),
                                             ]
-                                         
                                           ],
                                         )
                                       : SizedBox();
                                 }),
                               ],
-                          
                             ],
                           )
                         : SizedBox.shrink();
@@ -326,10 +324,7 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                         titleleft: 'ยกเลิก',
                         pressleft: () => sendToBack(context: context),
                         pressright: () {
-
-             
-                          Navigator.pop(context,'success');
-                       
+                          Navigator.pop(context, 'success');
                         },
                         titleright: 'ยืนยัน',
                       ),
@@ -337,7 +332,6 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                   )
               ],
             )),
-      
       ),
     );
   }
@@ -347,27 +341,26 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
       required indexdetail,
       bool? status,
       required double eventQty}) {
-         if (eventQty < 0) {
+    if (eventQty < 0) {
       print("กรุณากรอกจำนวนมากกว่าหรือเท่ากับ 0");
     } else if (eventQty >
         double.parse(widget.data[index]["head"]["detail"][indexdetail]["qty"]
             .toString())) {
-               widget.data[widget.index]["head"]["statusSuccess"] = status ?? true;
+      widget.data[widget.index]["head"]["statusSuccess"] = status ?? true;
       widget.data[widget.index]["head"]["detail"][indexdetail]["eventQty"] =
           eventQty;
-      widget.data[widget.index]["head"]["detail"][indexdetail]["statusSuccess"] =
-          true;
+      widget.data[widget.index]["head"]["detail"][indexdetail]
+          ["statusSuccess"] = true;
       print("คุณกรอกจำนวนเกินจำนวนขอโอน");
     } else {
       widget.data[widget.index]["head"]["statusSuccess"] = status ?? true;
       widget.data[widget.index]["head"]["detail"][indexdetail]["eventQty"] =
           eventQty;
-      widget.data[widget.index]["head"]["detail"][indexdetail]["statusSuccess"] =
-          true;
+      widget.data[widget.index]["head"]["detail"][indexdetail]
+          ["statusSuccess"] = true;
       print(widget.data[widget.index]["head"]["detail"][indexdetail]["eventQty"]
           .toString());
     }
-   
   }
 }
 
