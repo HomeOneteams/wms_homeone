@@ -33,7 +33,8 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
           ),
           title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (PP-RI)"),
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenHeight(20)),
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenHeight(20)),
           child: Stack(
             children: [
               ListView(children: [
@@ -47,14 +48,25 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(14),
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(20)),
-                          color: (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)? Colors.white:Styles.successColor,
+                          padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(20)),
+                          color: (_list["head"]["detail"] as List).any(
+                                  (element) =>
+                                      element["statusSuccess"] == false)
+                              ? Colors.white
+                              : Styles.successColor,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 '  ${_list['head']['docFormat']}',
-                                style: Styles.textcontentblackStyle.copyWith(color:  (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)?Colors.black:Colors.white),
+                                style: Styles.textcontentblackStyle.copyWith(
+                                    color: (_list["head"]["detail"] as List)
+                                            .any((element) =>
+                                                element["statusSuccess"] ==
+                                                false)
+                                        ? Colors.black
+                                        : Colors.white),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -80,7 +92,8 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           ),
                         ),
                       ),
-                      Gap(getProportionateScreenHeight(!_list['head']['isTest']?0:20)),
+                      Gap(getProportionateScreenHeight(
+                          !_list['head']['isTest'] ? 0 : 20)),
                       if (_list['head']['isTest']) ...[
                         SoLoInputFeild(
                           borderRadius: 14,
@@ -97,7 +110,6 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                               updateStatusSearchItem(
                                   index: index,
                                   indexdetail: value["lineNumber"]);
-                             
                             });
                             var res = await Navigator.push(
                                 context,
@@ -106,15 +118,14 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                           data: data,
                                           index: index,
                                         )));
-                            
-                              results.asMap().forEach((key, value) {
-                                updateStatusSearchItem(
-                                    index: index,
-                                    indexdetail: value["lineNumber"],
-                                    status: false);
-                                
-                              });
-                           
+
+                            results.asMap().forEach((key, value) {
+                              updateStatusSearchItem(
+                                  index: index,
+                                  indexdetail: value["lineNumber"],
+                                  status: false);
+                            });
+
                             if (res == 'success') {
                               setState(() {});
                             }
@@ -211,7 +222,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                                   Text('หน่วย      PC~ชิ้น')),
                                           Expanded(
                                               child: Text(
-                                            'หน่วย      PC~ชิ้น',
+                                            'หน่วย    PC~ชิ้น',
                                             textAlign: TextAlign.end,
                                           )),
                                         ],
@@ -332,6 +343,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
       widget.data[index]["head"]["statusSearch"] = status ?? true;
       widget.data[index]["head"]["detail"][_index]["statusSearch"] =
           status ?? true;
+      widget.data[index]["head"]["detail"][indexdetail]["eventQty"];
     }
   }
 }

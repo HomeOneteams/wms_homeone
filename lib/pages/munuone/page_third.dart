@@ -6,6 +6,7 @@ import 'package:wms_homeone/pages/munuone/components/cause/solo_cause.dart';
 import 'package:wms_homeone/pages/munuone/components/dropdown/solo_cause_dropdown.dart';
 import 'package:wms_homeone/pages/munuone/components/product_edit_num.dart';
 import 'package:wms_homeone/pages/munuone/components/solobox/solo_box_note.dart';
+import 'package:wms_homeone/pages/munuone/page_second.dart';
 import 'package:wms_homeone/size_config/size_config.dart';
 
 import '../../components/appbar/appbar.dart';
@@ -15,8 +16,11 @@ import '../../services/navigator.dart';
 import '../../themeapp/themeapp_style.dart';
 
 class MenuOnePageThird extends StatefulWidget {
-  const MenuOnePageThird({Key? key, required this.data, required this.index})
-      : super(key: key);
+  const MenuOnePageThird({
+    Key? key,
+    required this.data,
+    required this.index,
+  }) : super(key: key);
   final List<dynamic> data;
   final int index;
 
@@ -227,6 +231,8 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                                   .boxredColor,
                                                               child:
                                                                   SoLoInputFeild(
+                                                                onChanged:
+                                                                    (text) {},
                                                                 onSubmitted:
                                                                     (p0) {
                                                                   (widget.data[widget.index]["head"]
