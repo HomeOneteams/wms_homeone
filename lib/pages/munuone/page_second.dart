@@ -33,7 +33,8 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
           ),
           title: "จัดสินค้าขอโอนสินค้า-ระหว่างคลัง (PP-RI)"),
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: getProportionateScreenHeight(20)),
+          padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenHeight(20)),
           child: Stack(
             children: [
               ListView(children: [
@@ -47,14 +48,25 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(14),
                         child: Container(
-                          padding: EdgeInsets.symmetric(vertical: getProportionateScreenHeight(20)),
-                          color: (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)? Colors.white:Styles.successColor,
+                          padding: EdgeInsets.symmetric(
+                              vertical: getProportionateScreenHeight(20)),
+                          color: (_list["head"]["detail"] as List).any(
+                                  (element) =>
+                                      element["statusSuccess"] == false)
+                              ? Colors.white
+                              : Styles.successColor,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 '  ${_list['head']['docFormat']}',
-                                style: Styles.textcontentblackStyle.copyWith(color:  (_list["head"]["detail"] as List).any((element) => element["statusSuccess"] == false)?Colors.black:Colors.white),
+                                style: Styles.textcontentblackStyle.copyWith(
+                                    color: (_list["head"]["detail"] as List)
+                                            .any((element) =>
+                                                element["statusSuccess"] ==
+                                                false)
+                                        ? Colors.black
+                                        : Colors.white),
                               ),
                               GestureDetector(
                                 onTap: () {
@@ -69,7 +81,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                         horizontal: 10, vertical: 3),
                                     color: Styles.mainColor,
                                     child: Text(
-                                      "${_list['head']['isTest'] ? "hide" : "show"}",
+                                      "${_list['head']['isTest'] ? "ซ่อน" : "แสดง"}",
                                       style: Styles.textcontentStyle
                                           .copyWith(fontSize: 14),
                                     ),
@@ -80,7 +92,8 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                           ),
                         ),
                       ),
-                      Gap(getProportionateScreenHeight(!_list['head']['isTest']?0:20)),
+                      Gap(getProportionateScreenHeight(
+                          !_list['head']['isTest'] ? 0 : 20)),
                       if (_list['head']['isTest']) ...[
                         SoLoInputFeild(
                           borderRadius: 14,
@@ -97,7 +110,6 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                               updateStatusSearchItem(
                                   index: index,
                                   indexdetail: value["lineNumber"]);
-                             
                             });
                             var res = await Navigator.push(
                                 context,
@@ -106,15 +118,14 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                           data: data,
                                           index: index,
                                         )));
-                            
-                              results.asMap().forEach((key, value) {
-                                updateStatusSearchItem(
-                                    index: index,
-                                    indexdetail: value["lineNumber"],
-                                    status: false);
-                                
-                              });
-                           
+
+                            results.asMap().forEach((key, value) {
+                              updateStatusSearchItem(
+                                  index: index,
+                                  indexdetail: value["lineNumber"],
+                                  status: false);
+                            });
+
                             if (res == 'success') {
                               setState(() {});
                             }
@@ -205,13 +216,13 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                           horizontal:
                                               getProportionateScreenWidth(10)),
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           Expanded(
                                               child:
                                                   Text('หน่วย      PC~ชิ้น')),
                                           Expanded(
                                               child: Text(
-                                            'หน่วย      PC~ชิ้น',
+                                            'จำนวนขอโอน      ${detail['qty']}',
                                             textAlign: TextAlign.end,
                                           )),
                                         ],
@@ -222,10 +233,10 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                           horizontal:
                                               getProportionateScreenWidth(10)),
                                       child: Row(
-                                        children: const [
+                                        children: [
                                           Expanded(
                                               child: Text(
-                                            'หน่วย      PC~ชิ้น',
+                                            'จำนวนจัดได้      ${detail['eventQty']}',
                                             textAlign: TextAlign.end,
                                           )),
                                         ],
@@ -235,7 +246,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                 )
                               ],
                             ),
-                            icon: Icons.article_rounded,
+                            icon: Icons.local_activity,
                             bottomHeight: 170,
                           );
                         })
@@ -252,7 +263,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                     LuffyButton(
                       titleleft: 'ยกเลิก',
                       pressleft: () => sendToBack(context: context),
-                      pressright: () => {},
+                      pressright: () => {print(demoData)},
                       titleright: 'ยืนยัน',
                     ),
                     Gap(getProportionateScreenHeight(20)),

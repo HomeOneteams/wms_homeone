@@ -22,6 +22,7 @@ class _MenuOneState extends State<MenuOne> {
   @override
   void initState() {
     // TODO: implement initState
+    data = demoData;
     print("INITSTATE");
     super.initState();
   }
@@ -49,8 +50,6 @@ class _MenuOneState extends State<MenuOne> {
                     print(str);
 
                     data = demoData;
-
-                    print(demoData.length);
                     setState(() {});
                   },
                   fillColor: Styles.witeColor,
