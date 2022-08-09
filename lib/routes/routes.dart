@@ -16,16 +16,12 @@ class Routers {
         return MaterialPageRoute(builder: (_) => const MenuPage());
       case '/MenuOne':
         return MaterialPageRoute(builder: (_) => const MenuOne());
-   
+
       case '/MenuOnePageFourth':
         return MaterialPageRoute(builder: (_) => const MenuOnePageFourth());
       case '/SunjiFirstPage':
         return MaterialPageRoute(builder: (_) => const SunjiFirstPage());
-      case '/SunjiSecondPage':
-        return MaterialPageRoute(
-            builder: (_) => const SunjiSecondPage(
-                  data: [],
-                ));
+
       case '/ShoperFirstPage':
         return MaterialPageRoute(builder: (_) => const ShoperFirstPage());
       case '/ShoperSecondPage':

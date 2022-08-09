@@ -222,7 +222,11 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                                   Text('หน่วย      PC~ชิ้น')),
                                           Expanded(
                                               child: Text(
+<<<<<<< HEAD
                                             'จำนวนขอโอน      ${detail['qty']}',
+=======
+                                            'หน่วย    PC~ชิ้น',
+>>>>>>> 67cb631f230d2480548175f2e00421ea4ae3f8c7
                                             textAlign: TextAlign.end,
                                           )),
                                         ],
@@ -343,6 +347,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
       widget.data[index]["head"]["statusSearch"] = status ?? true;
       widget.data[index]["head"]["detail"][_index]["statusSearch"] =
           status ?? true;
+      widget.data[index]["head"]["detail"][indexdetail]["eventQty"];
     }
   }
 }
