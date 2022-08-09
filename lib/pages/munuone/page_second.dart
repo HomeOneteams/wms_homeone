@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/data.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
@@ -165,19 +166,19 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                             number: '${detail['itemCode']}',
                             mainAxisAlignment: MainAxisAlignment.start,
                             bottomWidget: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Row(
                                   children: const [
                                     Expanded(
                                       child: Text(
-                                        'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ',
+                                        'หน้าต่างบานเกล็ดซ้อน มุ้ง ESTATE 80x50CM ...',
                                         textAlign: TextAlign.center,
                                       ),
                                     ),
                                   ],
                                 ),
-                                Gap(getProportionateScreenHeight(10)),
+                                Gap(getProportionateScreenHeight(5)),
                                 Column(
                                   children: [
                                     LuffySendTo(
@@ -190,6 +191,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                           child: SoLoInputFeild(
                                             borderRadius: 10,
                                             verticalPadding: 10,
+                                            enabled: false,
                                             fillColor: Styles.witeColor,
                                             hintText:
                                                 "${_list['head']['branchCode']}",
@@ -203,6 +205,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                             borderRadius: 10,
                                             verticalPadding: 10,
                                             fillColor: Styles.witeColor,
+                                            enabled: false,
                                             hintText:
                                                 "${_list['head']['branchCode']}",
                                             prefixIconData: Icons.search,
@@ -222,11 +225,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                                   Text('หน่วย      PC~ชิ้น')),
                                           Expanded(
                                               child: Text(
-<<<<<<< HEAD
                                             'จำนวนขอโอน      ${detail['qty']}',
-=======
-                                            'หน่วย    PC~ชิ้น',
->>>>>>> 67cb631f230d2480548175f2e00421ea4ae3f8c7
                                             textAlign: TextAlign.end,
                                           )),
                                         ],
@@ -246,14 +245,49 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                         ],
                                       ),
                                     ),
+                                    Gap(getProportionateScreenHeight(5)),
+                                    Container(
+                                      margin:
+                                          EdgeInsets.symmetric(horizontal: 10),
+                                      child: Text(
+                                        detail["remark"] ?? '',
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    )
                                   ],
-                                )
+                                ),
                               ],
                             ),
                             icon: Icons.local_activity,
-                            bottomHeight: 170,
+                            bottomHeight: 220,
                           );
-                        })
+                        }),
+                        Column(children: [
+                          ListTile(
+                            leading: CircleAvatar(
+                              child: Icon(Icons.camera_alt_rounded),
+                            ),
+                            title: Text('Camera Permission'),
+                            subtitle: Text('Status : '),
+                            onTap: () async {
+                              PermissionStatus cameraStatus =
+                                  await Permission.camera.request();
+                              if (cameraStatus == PermissionStatus.granted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('dayyyyta')));
+                              }
+                              if (cameraStatus == PermissionStatus.denied) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                        content: Text('da9oujtyjta')));
+                              }
+                              if (cameraStatus ==
+                                  PermissionStatus.permanentlyDenied) {
+                                openAppSettings();
+                              }
+                            },
+                          ),
+                        ]),
                       ],
                     ],
                   );

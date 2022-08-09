@@ -46,12 +46,7 @@ class _MenuOneState extends State<MenuOne> {
                 SoLoInputFeild(
                   borderRadius: 14,
                   verticalPadding: 15,
-                  onChanged: (str) {
-                    print(str);
-
-                    data = demoData;
-                    setState(() {});
-                  },
+                  onChanged: (str) {},
                   fillColor: Styles.witeColor,
                   hintText: "ค้นหา ใบขอโอนสินค้า หรือ ใบรับสินค้า",
                   prefixIconData: Icons.search,

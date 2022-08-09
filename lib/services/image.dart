@@ -29,6 +29,8 @@ class LuffyImages {
         return image;
     }
   }
+
+  void onePiceCheckPermission() {}
 }
 
 enum ImageType { GALLERY, CAMERA, VIDEO_CAMERA, VIDEO_GALLERY, MULTIIMAGE }

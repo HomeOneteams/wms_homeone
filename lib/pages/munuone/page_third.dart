@@ -29,6 +29,7 @@ class MenuOnePageThird extends StatefulWidget {
 }
 
 class _MenuOnePageThirdState extends State<MenuOnePageThird> {
+  String dropdownValue = 'เลือกสาเหตุที่จัดได้ไม่ครบ';
   late List<TextEditingController> controller = [];
   late List<TextEditingController> remark = [];
   @override
@@ -294,9 +295,76 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                         .toString()) >=
                                                     0)) ...[
                                               LuffyMenu(
-                                                bottomWidget: DropdownCause(),
+                                                bottomWidget: Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          getProportionateScreenWidth(
+                                                              10)),
+                                                  child: DropdownButton<String>(
+                                                    dropdownColor:
+                                                        Styles.witeColor,
+                                                    value: dropdownValue,
+                                                    icon: const Icon(
+                                                      Icons.arrow_drop_down,
+                                                      color: Colors.black,
+                                                    ),
+                                                    elevation: 16,
+                                                    style: Styles
+                                                        .textcontentblackStyle,
+                                                    underline: Container(
+                                                      height: 2,
+                                                      color: Colors.transparent,
+                                                    ),
+                                                    onChanged:
+                                                        (String? newValue) {
+                                                      dropdownValue = newValue!;
+
+                                                      (widget.data[widget.index]
+                                                                      ["head"]
+                                                                  ["detail"]
+                                                              as List)
+                                                          .asMap()
+                                                          .forEach(
+                                                              (key, element) {
+                                                        if (widget.data[widget
+                                                                        .index]
+                                                                    ["head"]
+                                                                ["detail"][key]
+                                                            ["statusSearch"]) {
+                                                          updateStatusSearchItem(
+                                                              index:
+                                                                  widget.index,
+                                                              indexdetail: key,
+                                                              eventQty: double
+                                                                  .parse(controller[
+                                                                          key]
+                                                                      .text));
+                                                        }
+                                                      });
+                                                      setState(() {});
+                                                    },
+                                                    isExpanded: true,
+                                                    items: [
+                                                      'เลือกสาเหตุที่จัดได้ไม่ครบ',
+                                                      'สินค้าชำรุด',
+                                                      'สินค้ามีจำนวนน้อยกว่าจำนวนที่โอน',
+                                                      'รอสินค้า'
+                                                    ].map<
+                                                            DropdownMenuItem<
+                                                                String>>(
+                                                        (String value) {
+                                                      return DropdownMenuItem<
+                                                          String>(
+                                                        value: value,
+                                                        child: Center(
+                                                            child: Text(value)),
+                                                      );
+                                                    }).toList(),
+                                                  ),
+                                                ),
                                                 padding: 0,
                                                 title: "",
+                                                bottomHeight: 80,
                                                 number: "สาเหตุที่จัดได้ไม่ครบ",
                                               ),
                                               LuffyMenu(
@@ -306,6 +374,30 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
                                                 number: "หมายเหตุ",
                                                 bottomWidget: SoLoInputFeild(
                                                   hintText: "หมายเหตุ",
+                                                  onChanged: (p0) {
+                                                    (widget.data[widget.index]
+                                                                ["head"]
+                                                            ["detail"] as List)
+                                                        .asMap()
+                                                        .forEach(
+                                                            (key, element) {
+                                                      if (widget.data[widget
+                                                                      .index]
+                                                                  ["head"]
+                                                              ["detail"][key]
+                                                          ["statusSearch"]) {
+                                                        updateStatusSearchItem(
+                                                            index: widget.index,
+                                                            indexdetail: key,
+                                                            eventQty:
+                                                                double.parse(
+                                                                    controller[
+                                                                            key]
+                                                                        .text));
+                                                      }
+                                                    });
+                                                    setState(() {});
+                                                  },
                                                   textEditingController:
                                                       remark[index],
                                                 ),
@@ -349,7 +441,7 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
       required double eventQty}) {
     if (eventQty < 0) {
       print("กรุณากรอกจำนวนมากกว่าหรือเท่ากับ 0");
-    } else if (eventQty >
+    } else if (eventQty <
         double.parse(widget.data[index]["head"]["detail"][indexdetail]["qty"]
             .toString())) {
       widget.data[widget.index]["head"]["statusSuccess"] = status ?? true;
@@ -357,8 +449,16 @@ class _MenuOnePageThirdState extends State<MenuOnePageThird> {
           eventQty;
       widget.data[widget.index]["head"]["detail"][indexdetail]
           ["statusSuccess"] = true;
+      widget.data[widget.index]["head"]["detail"][indexdetail]["RefRemark"] =
+          remark[indexdetail].text;
+      widget.data[widget.index]["head"]["detail"][indexdetail]["remark"] =
+          dropdownValue;
       print("คุณกรอกจำนวนเกินจำนวนขอโอน");
     } else {
+      // widget.data[widget.index]["head"]["detail"][indexdetail]["RefRemark"] =
+      //     dropdownValue;
+      widget.data[widget.index]["head"]["detail"][indexdetail]["RefRemark"] =
+          remark[indexdetail].text;
       widget.data[widget.index]["head"]["statusSuccess"] = status ?? true;
       widget.data[widget.index]["head"]["detail"][indexdetail]["eventQty"] =
           eventQty;
