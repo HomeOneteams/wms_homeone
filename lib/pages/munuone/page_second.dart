@@ -6,17 +6,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/data.dart';
-import 'package:wms_homeone/pages/munuone/components/camera_upload.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
 import '../../components/input_feild.dart';
+import '../../services/image.dart';
 import '../../services/navigator.dart';
 import '../../size_config/size_config.dart';
 import '../../themeapp/themeapp_style.dart';
 import '../menu/components/luffy_menu.dart';
 import 'components/solobox/solo_box_document.dart';
 import 'components/soloproduct/solo_product_box.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'components/upload_pictur.dart';
 
 class MenuOnePageSecond extends StatefulWidget {
   const MenuOnePageSecond({Key? key, required this.data}) : super(key: key);
@@ -26,19 +29,6 @@ class MenuOnePageSecond extends StatefulWidget {
 }
 
 class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
-  File? image;
-  Future pickImage(ImageSource source) async {
-    try {
-      final image = await ImagePicker().pickImage(source: source);
-      if (image == null) return;
-
-      final imageTemporary = File(image.path);
-      setState(() => this.image = imageTemporary);
-    } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     var data = widget.data;
@@ -279,30 +269,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                             bottomHeight: 220,
                           );
                         }),
-                        Column(
-                          children: [
-                            image != null
-                                ? Image.file(
-                                    image!,
-                                    width: 160,
-                                    height: 160,
-                                    fit: BoxFit.cover,
-                                  )
-                                : FlutterLogo(
-                                    size: 100,
-                                  ),
-                            buildButton(
-                              title: 'แกลลอรี่',
-                              icon: Icons.image_rounded,
-                              onClicked: () => pickImage(ImageSource.gallery),
-                            ),
-                            buildButton(
-                              title: 'กล้องถ่ายรูป',
-                              icon: Icons.camera_alt_rounded,
-                              onClicked: () => pickImage(ImageSource.camera),
-                            )
-                          ],
-                        ),
+                        UploadPicture(),
                       ],
                     ],
                   );
