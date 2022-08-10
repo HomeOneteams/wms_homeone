@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/data.dart';
+import 'package:wms_homeone/pages/munuone/components/alert/alert_map.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
@@ -164,6 +165,7 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                         ...List.generate(
                             (_list['head']['detail'] as List).length, (index) {
                           var detail = _list['head']['detail'][index];
+
                           return LuffyMenu(
                             padding: 0,
                             headColor: detail['statusSuccess']
@@ -265,8 +267,8 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                                 ),
                               ],
                             ),
-                            icon: Icons.local_activity,
                             bottomHeight: 220,
+                            iconWidget: AlertMap(),
                           );
                         }),
                         UploadPicture(),

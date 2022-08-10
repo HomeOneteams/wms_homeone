@@ -19,6 +19,7 @@ class LuffyMenu extends StatefulWidget {
     this.headColor,
     this.bottomHeight,
     this.bottomWidget,
+    this.iconWidget,
     this.padding,
     this.mainAxisAlignment,
   }) : super(key: key);
@@ -36,6 +37,7 @@ class LuffyMenu extends StatefulWidget {
   final double? padding;
   final MainAxisAlignment? mainAxisAlignment;
   final Widget? bottomWidget;
+  final Widget? iconWidget;
   @override
   State<LuffyMenu> createState() => _LuffyMenuState();
 }
@@ -96,6 +98,10 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                 Text(widget.title,
                                     style: Styles.textcontentStyle),
                                 const Spacer(),
+                                Container(
+                                  width: 30,
+                                  child: widget.iconWidget,
+                                ),
                                 if (widget.icon != null)
                                   Icon(
                                     widget.icon,
@@ -131,15 +137,14 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                 MainAxisAlignment.center,
                             children: [
                               Padding(
-                                      padding: EdgeInsets.only(
-                                          left: widget.alignment == null
-                                              ? 0
-                                              : 10),
-                                      child: Text(widget.subtitle ?? '',
-                                          style: Styles.textcontentblackStyle),
-                                    ),
-                                 
-                              Expanded(child: widget.bottomWidget ?? const SizedBox())
+                                padding: EdgeInsets.only(
+                                    left: widget.alignment == null ? 0 : 10),
+                                child: Text(widget.subtitle ?? '',
+                                    style: Styles.textcontentblackStyle),
+                              ),
+                              Expanded(
+                                  child:
+                                      widget.bottomWidget ?? const SizedBox())
                             ],
                           ),
                         ),
