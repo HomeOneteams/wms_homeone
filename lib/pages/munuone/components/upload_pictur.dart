@@ -22,16 +22,6 @@ class UploadPicture extends StatefulWidget {
 
 class _UploadPictureState extends State<UploadPicture> {
   File? image;
-  Future pickImage() async {
-    try {
-      final image = await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (image == null) return;
-      final imageTemp = File(image.path);
-      setState(() => this.image = imageTemp);
-    } on PlatformException catch (e) {
-      print('Failed to pick image: $e');
-    }
-  }
 
   Future pickImageC() async {
     try {
@@ -50,70 +40,32 @@ class _UploadPictureState extends State<UploadPicture> {
       children: [
         SizedBox(
           width: 150,
-          child: MaterialButton(
-              padding: EdgeInsets.all(getProportionateScreenHeight(10)),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Styles.mainColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.image_rounded,
-                    color: Colors.white,
-                  ),
-                  Gap(getProportionateScreenWidth(10)),
-                  Text("นำเข้ารูปภาพ", style: Styles.textcontentStyle),
-                ],
-              ),
-              onPressed: () {
-                pickImage();
-              }),
         ),
         Gap(getProportionateScreenHeight(10)),
         SizedBox(
-          width: 150,
+          width: double.infinity,
+          height: 160,
           child: MaterialButton(
               padding: EdgeInsets.all(getProportionateScreenHeight(10)),
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(14),
               ),
-              color: Styles.mainColor,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(
-                    Icons.camera_alt_rounded,
-                    color: Colors.white,
-                  ),
-                  Gap(getProportionateScreenWidth(10)),
-                  Text("กล้องถ่ายรูป", style: Styles.textcontentStyle),
-                ],
-              ),
+                color: Colors.white,
+                child: Text("อัพโหลดรูปภาพ",
+                    style: Styles.textlableStyle.copyWith(fontSize: 15)),
               onPressed: () {
                 pickImageC();
               }),
         ),
         Gap(getProportionateScreenHeight(20)),
-        ClipRRect(
-          borderRadius: BorderRadius.circular(10),
-          child: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(20),
-                vertical: getProportionateScreenHeight(10)),
-            color: Colors.white,
-            width: double.infinity,
-            height: 250,
-            child: image != null
+           
+             image != null
                 ? Image.file(image!)
                 : Center(
                     child: Text(
                     'ไม่มีรูปภาพที่จะแสดง',
                     style: Styles.textlableStyle.copyWith(fontSize: 15),
                   )),
-          ),
-        ),
       ],
     );
   }

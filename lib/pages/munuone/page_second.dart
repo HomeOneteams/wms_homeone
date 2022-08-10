@@ -268,10 +268,12 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                               ],
                             ),
                             bottomHeight: 220,
-                            iconWidget: AlertMap(),
+                            iconWidget: const SizedBox(
+                              width: 30,
+                              child:  AlertMap()),
                           );
                         }),
-                        UploadPicture(),
+                        const UploadPicture(),
                       ],
                     ],
                   );

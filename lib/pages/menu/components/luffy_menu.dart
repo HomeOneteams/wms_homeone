@@ -99,7 +99,6 @@ class _LuffyMenuState extends State<LuffyMenu> {
                                     style: Styles.textcontentStyle),
                                 const Spacer(),
                                 Container(
-                                  width: 30,
                                   child: widget.iconWidget,
                                 ),
                                 if (widget.icon != null)

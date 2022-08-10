@@ -17,31 +17,45 @@ class _AlertMapState extends State<AlertMap> {
       onPressed: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-          title: const Text(
-            'ตำแหน่งสินค้า',
-            textAlign: TextAlign.center,
+          content: Builder(
+            builder: (context) {
+              var height = MediaQuery.of(context).size.height;
+              var width = MediaQuery.of(context).size.width;
+
+              return SizedBox(
+                height: height - 700,
+                width: width - 70,
+              );
+            },
           ),
-          content: Row(
+          title: Column(
             children: [
-              Text(
-                'W1-Z05-1 พื้นที่รวม',
-                style: Styles.textcontentblackStyle.copyWith(fontSize: 14),
+              const Text(
+                'ตำแหน่งสินค้า',
+                textAlign: TextAlign.center,
               ),
-              Gap(getProportionateScreenWidth(5)),
+              Gap(getProportionateScreenHeight(30)),
+              const Text(
+                'W1-Z05-1 พื้นที่รวม',
+                textAlign: TextAlign.center,
+              ),
+              Gap(getProportionateScreenHeight(10)),
               ClipRRect(
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(20),
                 child: Container(
-                  width: 30,
+                  width: 50,
                   color: Styles.successColor,
                   child: const Icon(
-                    Icons.compare_arrows_outlined,
+                    Icons.compare_arrows_rounded,
                     color: Colors.white,
                   ),
                 ),
               ),
-              Gap(getProportionateScreenWidth(5)),
-              Text('W1-Z05-1 พื้นที่รวม',
-                  style: Styles.textcontentblackStyle.copyWith(fontSize: 14)),
+              Gap(getProportionateScreenHeight(10)),
+              const Text(
+                'W1-Z05-1 พื้นที่รวม',
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
           actions: <Widget>[
