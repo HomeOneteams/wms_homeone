@@ -1,8 +1,12 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wms_homeone/components/button/luffy_button.dart';
 import 'package:wms_homeone/data.dart';
+import 'package:wms_homeone/pages/munuone/components/camera_upload.dart';
 import 'package:wms_homeone/pages/munuone/page_third.dart';
 
 import '../../components/appbar/appbar.dart';
@@ -22,6 +26,19 @@ class MenuOnePageSecond extends StatefulWidget {
 }
 
 class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
+  File? image;
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+
+      final imageTemporary = File(image.path);
+      setState(() => this.image = imageTemporary);
+    } on PlatformException catch (e) {
+      print('Failed to pick image: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var data = widget.data;
@@ -262,37 +279,35 @@ class _MenuOnePageSecondState extends State<MenuOnePageSecond> {
                             bottomHeight: 220,
                           );
                         }),
-                        Column(children: [
-                          ListTile(
-                            leading: CircleAvatar(
-                              child: Icon(Icons.camera_alt_rounded),
+                        Column(
+                          children: [
+                            image != null
+                                ? Image.file(
+                                    image!,
+                                    width: 160,
+                                    height: 160,
+                                    fit: BoxFit.cover,
+                                  )
+                                : FlutterLogo(
+                                    size: 100,
+                                  ),
+                            buildButton(
+                              title: 'แกลลอรี่',
+                              icon: Icons.image_rounded,
+                              onClicked: () => pickImage(ImageSource.gallery),
                             ),
-                            title: Text('Camera Permission'),
-                            subtitle: Text('Status : '),
-                            onTap: () async {
-                              PermissionStatus cameraStatus =
-                                  await Permission.camera.request();
-                              if (cameraStatus == PermissionStatus.granted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('dayyyyta')));
-                              }
-                              if (cameraStatus == PermissionStatus.denied) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('da9oujtyjta')));
-                              }
-                              if (cameraStatus ==
-                                  PermissionStatus.permanentlyDenied) {
-                                openAppSettings();
-                              }
-                            },
-                          ),
-                        ]),
+                            buildButton(
+                              title: 'กล้องถ่ายรูป',
+                              icon: Icons.camera_alt_rounded,
+                              onClicked: () => pickImage(ImageSource.camera),
+                            )
+                          ],
+                        ),
                       ],
                     ],
                   );
                 }),
-                Gap(getProportionateScreenHeight(70)),
+                Gap(getProportionateScreenHeight(100)),
               ]),
               if (data.isNotEmpty)
                 Column(
